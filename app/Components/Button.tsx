@@ -5,12 +5,12 @@ function pressButton() {
     console.log("You pressed the button!");
 }
 
-type buttonProps = {
+type props = {
     icon: keyof typeof Ionicons.glyphMap,
     text: string
 }
 
-export default function Button({icon, text}: buttonProps) {
+export default function Button({icon, text}: props) {
     return (
         <TouchableHighlight onPress={pressButton}>
             <View style={{"alignItems": "center", "gap": 7}}>
