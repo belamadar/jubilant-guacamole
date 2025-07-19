@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <ScrollView>
         <View style={{ display: "flex", flexDirection: "row", padding: 20, gap: "45%" }}>
-          <Button icon="arrow-back-sharp" text="" />
+          <Button icon="arrow-back-sharp" text="" style={0}/>
           <Text style={{ fontSize: 32 }}>My Trips</Text>
         </View>
         <Travel_Info location="Dublin" date="17.08.2025 - 22.08.2025"/>

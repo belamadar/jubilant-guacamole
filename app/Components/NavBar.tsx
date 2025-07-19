@@ -9,7 +9,7 @@ export default function NavBar() {
             flexDirection: "row",
             justifyContent: "space-between",
             padding: 10,
-            backgroundColor: "#ffcc99",
+            backgroundColor: "#fff5ee",
             marginTop: "50%"
         }
     });
@@ -28,6 +28,7 @@ export default function NavBar() {
                     key={attribute.key} 
                     icon={attribute.icon as keyof typeof Ionicons.glyphMap} 
                     text={attribute.text}
+                    style={0}
                 />
             ))}
         </View>
