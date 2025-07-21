@@ -4,10 +4,12 @@ import Button from "./Button";
 
 type props = {
     location: string,
-    date: string
+    date: string,
+    progress: number
 }
 
-export default function Travel_Info({ location, date }: props) {
+export default function Travel_Info({ location, date, progress }: props) {
+    console.log(progress);
     const styles = StyleSheet.create({
         outer: {
             display: "flex",
@@ -15,8 +17,9 @@ export default function Travel_Info({ location, date }: props) {
             justifyContent: "space-between",
             marginLeft: "5%",
             marginRight: "5%",
+            padding: 5,
             borderWidth: 2,
-            borderRadius: 20,
+            borderRadius: 10,
             borderColor: "#dcdcdc",
             backgroundColor: "#fff5ee",
         },
@@ -50,7 +53,7 @@ export default function Travel_Info({ location, date }: props) {
                 <AnimatedCircularProgress
                     size={30}
                     width={5}
-                    fill={20}
+                    fill={progress}
                     tintColor="#994c00"
                     onAnimationComplete={() => console.log('onAnimationComplete')}
                     backgroundColor="#ffcc99"

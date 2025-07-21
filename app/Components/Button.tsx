@@ -1,5 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 function pressButton() {
     console.log("You pressed the button!");
@@ -22,27 +22,27 @@ export default function Button({ icon, text, style }: props) {
             display: "flex",
             alignItems: "center",
             backgroundColor: "#994c00",
-            padding: "10%",
+            padding: 16,
             borderRadius: 10
         }
     });
 
     if (style === 0) {
         return (
-            <TouchableHighlight onPress={pressButton}>
+            <TouchableOpacity onPress={pressButton}>
                 <View style={styles.nav}>
                     <Ionicons name={icon} size={32}/>
                     <Text>{text}</Text>
                 </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
         );
     } else {
         return (
-            <TouchableHighlight onPress={pressButton}>
+            <TouchableOpacity onPress={pressButton}>
                 <View style={styles.edit}>
                     <Ionicons name={icon} color={"white"} />
                 </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
         );
     }
 }

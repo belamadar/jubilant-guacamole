@@ -8,24 +8,25 @@ export default function NavBar() {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            padding: 10,
+            paddingHorizontal: 10,
+            paddingTop: 10,
+            paddingBottom: 50,
             backgroundColor: "#fff5ee",
-            marginTop: "30%"
         }
     });
 
     const attributes = [
-        {key:'0', icon: "list", text: "My Trips"},
-        {key:'1', icon: "add-outline", text: "New Trip"},
-        {key:'2', icon: "calendar-outline", text: "Calender"},
-        {key:'3', icon: "settings", text: "Settings"},
+        {icon: "list", text: "My Trips"},
+        {icon: "add-outline", text: "New Trip"},
+        {icon: "calendar-outline", text: "Calender"},
+        {icon: "settings", text: "Settings"},
     ]
 
     return (
         <View style={styles.container}>
-            {attributes.map((attribute) => (
+            {attributes.map((attribute, index) => (
                 <Button 
-                    key={attribute.key} 
+                    key={index}
                     icon={attribute.icon as keyof typeof Ionicons.glyphMap} 
                     text={attribute.text}
                     style={0}
