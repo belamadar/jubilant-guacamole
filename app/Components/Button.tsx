@@ -21,8 +21,8 @@ export default function Button({ icon, text, style }: props) {
         edit: {
             display: "flex",
             alignItems: "center",
-            backgroundColor: "#330000",
-            padding: "50%",
+            backgroundColor: "#994c00",
+            padding: "10%",
             borderRadius: 10
         }
     });
@@ -40,8 +40,7 @@ export default function Button({ icon, text, style }: props) {
         return (
             <TouchableHighlight onPress={pressButton}>
                 <View style={styles.edit}>
-                    <Ionicons name={icon} color={"white"}/>
-                    <Text>{text}</Text>
+                    <Ionicons name={icon} color={"white"} />
                 </View>
             </TouchableHighlight>
         );

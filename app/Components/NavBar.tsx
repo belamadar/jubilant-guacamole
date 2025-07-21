@@ -10,7 +10,6 @@ export default function NavBar() {
             justifyContent: "space-between",
             padding: 10,
             backgroundColor: "#fff5ee",
-            marginTop: "50%"
         }
     });
 
