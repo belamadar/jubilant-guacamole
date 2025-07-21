@@ -27,7 +27,7 @@ export default function Travel_Info({ location, date }: props) {
             justifyContent: "center",
             alignItems: "flex-start",
             padding: "2%",
-            gap: "15%"
+            gap: "5%"
         },
 
         innerRight: {
@@ -43,7 +43,7 @@ export default function Travel_Info({ location, date }: props) {
 
         <View style={styles.outer}>
             <View style={styles.innerLeft}>
-                <Text style={{ fontSize: 16 }}>{location}</Text>
+                <Text style={{ fontSize: 16, fontWeight: "bold" }}>{location}</Text>
                 <Text style={{ fontSize: 16 }}>{date}</Text>
             </View>
             <View style={styles.innerRight}>
