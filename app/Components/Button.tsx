@@ -1,4 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { Link, RelativePathString } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 function pressButton() {
@@ -8,10 +9,11 @@ function pressButton() {
 type props = {
     icon: keyof typeof Ionicons.glyphMap,
     text: string,
-    style: number
+    style: number,
+    link: string
 }
 
-export default function Button({ icon, text, style }: props) {
+export default function Button({ icon, text, style, link }: props) {
     const styles = StyleSheet.create({
         nav: {
             alignItems: "center",
@@ -29,20 +31,25 @@ export default function Button({ icon, text, style }: props) {
 
     if (style === 0) {
         return (
-            <TouchableOpacity onPress={pressButton}>
-                <View style={styles.nav}>
-                    <Ionicons name={icon} size={32}/>
-                    <Text>{text}</Text>
-                </View>
-            </TouchableOpacity>
+            <Link href={link as RelativePathString} asChild>
+                <TouchableOpacity>
+                    <View style={styles.nav}>
+                        <Ionicons name={icon} size={32} />
+                        <Text>{text}</Text>
+                    </View>
+                </TouchableOpacity>
+            </Link>
         );
     } else {
         return (
-            <TouchableOpacity onPress={pressButton}>
-                <View style={styles.edit}>
-                    <Ionicons name={icon} color={"white"} />
-                </View>
-            </TouchableOpacity>
+            <Link href={link as RelativePathString} asChild>
+                <TouchableOpacity onPress={pressButton}>
+                    <View style={styles.edit}>
+                        <Ionicons name={icon} color={"white"} />
+                    </View>
+                </TouchableOpacity>
+            </Link>
+
         );
     }
 }

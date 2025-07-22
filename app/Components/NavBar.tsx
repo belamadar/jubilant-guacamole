@@ -16,10 +16,10 @@ export default function NavBar() {
     });
 
     const attributes = [
-        {icon: "list", text: "My Trips"},
-        {icon: "add-outline", text: "New Trip"},
-        {icon: "calendar-outline", text: "Calender"},
-        {icon: "settings", text: "Settings"},
+        {icon: "list", text: "My Trips", link: "/my-trips"},
+        {icon: "add-outline", text: "New Trip", link: "/new-trip"},
+        {icon: "calendar-outline", text: "Calender", link: "/calendar"},
+        {icon: "settings", text: "Settings", link: "/settings"},
     ]
 
     return (
@@ -30,6 +30,7 @@ export default function NavBar() {
                     icon={attribute.icon as keyof typeof Ionicons.glyphMap} 
                     text={attribute.text}
                     style={0}
+                    link={attribute.link}
                 />
             ))}
         </View>

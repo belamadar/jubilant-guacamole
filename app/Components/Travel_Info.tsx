@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import CircularProgress from 'react-native-circular-progress-indicator';
 import Button from "./Button";
 
 type props = {
@@ -9,14 +9,13 @@ type props = {
 }
 
 export default function Travel_Info({ location, date, progress }: props) {
-    console.log(progress);
     const styles = StyleSheet.create({
         outer: {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            marginLeft: "5%",
-            marginRight: "5%",
+            marginLeft: 5,
+            marginRight: 5,
             padding: 5,
             borderWidth: 2,
             borderRadius: 10,
@@ -29,16 +28,16 @@ export default function Travel_Info({ location, date, progress }: props) {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "flex-start",
-            padding: "2%",
-            gap: "5%"
+            padding: 2,
+            gap: 5
         },
 
         innerRight: {
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
-            alignItems: "center",
-            gap: "10%"
+            alignItems: "flex-start",
+            gap: 10
         }
     });
 
@@ -50,16 +49,18 @@ export default function Travel_Info({ location, date, progress }: props) {
                 <Text style={{ fontSize: 16 }}>{date}</Text>
             </View>
             <View style={styles.innerRight}>
-                <AnimatedCircularProgress
-                    size={30}
-                    width={5}
-                    fill={progress}
-                    tintColor="#994c00"
-                    onAnimationComplete={() => console.log('onAnimationComplete')}
-                    backgroundColor="#ffcc99"
-                    rotation={0}
+                <CircularProgress
+                    value={progress}
+                    showProgressValue={false}
+                    radius={20}
+                    duration={0}
+                    activeStrokeColor={"#994c00"}
+                    inActiveStrokeColor={"#ffcc99"}
+                    activeStrokeWidth={7}
+                    inActiveStrokeWidth={7}
+                    maxValue={100}
                 />
-                <Button icon="pencil" text="" style={1}/>
+                <Button icon="pencil" text="" style={1} link="/edit-trip" />
             </View>
         </View>
     );
