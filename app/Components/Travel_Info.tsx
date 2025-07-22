@@ -36,7 +36,7 @@ export default function Travel_Info({ location, date, progress }: props) {
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
-            alignItems: "flex-start",
+            alignItems: "center",
             gap: 10
         }
     });
@@ -52,7 +52,7 @@ export default function Travel_Info({ location, date, progress }: props) {
                 <CircularProgress
                     value={progress}
                     showProgressValue={false}
-                    radius={20}
+                    radius={15}
                     duration={0}
                     activeStrokeColor={"#994c00"}
                     inActiveStrokeColor={"#ffcc99"}

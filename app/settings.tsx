@@ -1,7 +1,9 @@
-import { Text } from "react-native";
+import { ScrollView, Text } from "react-native";
 
 export default function Settings() {
     return (
-        <Text style={{ margin: "auto", fontSize: 64, fontWeight: "bold" }}>Settings screen</Text>
+        <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "center" }}>
+            <Text style={{ fontSize: 64, fontWeight: "bold" }}>Settings</Text>
+        </ScrollView>
     );
 }
