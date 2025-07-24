@@ -16,7 +16,7 @@ export default function NavBar() {
     });
 
     const attributes = [
-        {icon: "list", text: "My Trips", link: "/my-trips"},
+        {icon: "list", text: "My Trips", link: "/"},
         {icon: "add-outline", text: "New Trip", link: "/new-trip"},
         {icon: "calendar-outline", text: "Calender", link: "/calendar"},
         {icon: "settings", text: "Settings", link: "/settings"},
