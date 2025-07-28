@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView, StyleSheet, TextInput, View } from "react-native";
-import Button from "./Components/Button";
+import TextButton from "./Components/TextButton";
 
 export default function NewTrip() {
     const [name, setName] = React.useState('');
@@ -50,7 +50,7 @@ export default function NewTrip() {
                     value={endDate}
                     placeholder="End Date: MM/DD/YY"
                 />
-                <Button text="Next" icon="" style={2} link=""/>
+                <TextButton text="Next" link="/trip-type"/>
             </View>
         </ScrollView>
     );

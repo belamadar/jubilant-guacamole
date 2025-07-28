@@ -12,7 +12,8 @@ export default function RootLayout() {
           <Stack.Screen name="new-trip" options={{ title: "New Trip" }} />
           <Stack.Screen name="calendar" options={{ title: "Calendar" }} />
           <Stack.Screen name="settings" options={{ title: "Settings" }} />
-          <Stack.Screen name="edit-trip" options={{ title: "Edit Trip" }} />
+          <Stack.Screen name="edit-trip" options={{ title: "My Trips" }} />
+          <Stack.Screen name="trip-type" options={{ title: "New Trip" }} />
         </Stack>
       </View>
       <NavBar />

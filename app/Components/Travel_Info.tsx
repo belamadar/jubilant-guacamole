@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import CircularProgress from 'react-native-circular-progress-indicator';
-import Button from "./Button";
+import EditButton from "./EditButton";
 
 type props = {
     location: string,
@@ -60,7 +60,7 @@ export default function Travel_Info({ location, date, progress }: props) {
                     inActiveStrokeWidth={7}
                     maxValue={100}
                 />
-                <Button icon="pencil" text="" style={1} link="/edit-trip" />
+                <EditButton icon="pencil" link="/edit-trip" />
             </View>
         </View>
     );

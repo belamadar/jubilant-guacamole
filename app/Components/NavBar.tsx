@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { StyleSheet, View } from "react-native";
-import Button from "./Button";
+import NavButton from "./NavButton";
 
 export default function NavBar() {
     const styles = StyleSheet.create({
@@ -25,11 +25,10 @@ export default function NavBar() {
     return (
         <View style={styles.container}>
             {attributes.map((attribute, index) => (
-                <Button 
+                <NavButton 
                     key={index}
                     icon={attribute.icon as keyof typeof Ionicons.glyphMap} 
                     text={attribute.text}
-                    style={0}
                     link={attribute.link}
                 />
             ))}
