@@ -13,12 +13,8 @@ export default function Button({ text, link }: props) {
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: "#994c00",
-            padding: 8,
             borderRadius: 10,
-            maxHeight: 50,
-            maxWidth: 75,
-            minWidth: 75,
-            minHeight: 50
+            padding: 20
         }
     });
 
