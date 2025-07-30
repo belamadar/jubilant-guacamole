@@ -14,7 +14,6 @@ export default function Travel_Info({ location, date, progress }: props) {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            marginHorizontal: 5,
             marginVertical: 5,
             padding: 5,
             borderWidth: 2,

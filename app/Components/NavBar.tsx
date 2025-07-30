@@ -1,6 +1,10 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
+// import Icon from '@expo/vector-icons/MaterialCommunityIcons';
+// import { router } from 'expo-router';
 import { StyleSheet, View } from "react-native";
 import NavButton from "./NavButton";
+// import { Button } from 'react-native-paper';
+
 
 export default function NavBar() {
     const styles = StyleSheet.create({
@@ -27,6 +31,24 @@ export default function NavBar() {
         { icon: "settings", text: "Settings", link: "/settings" },
     ]
 
+    // const styles = StyleSheet.create({
+    //     container: {
+    //         display: "flex",
+    //         flexDirection: "row",
+    //         justifyContent: "space-between",
+    //         gap: 40,
+    //         paddingHorizontal: 10,
+    //         paddingTop: 5,
+    //         paddingBottom: 50,
+    //         backgroundColor: "#fff5ee",
+    //     },
+
+    //     button: {
+    //         flexDirection: "column",
+    //         maxWidth: 60,
+    //     }
+    // });
+
     return (
         <View style={styles.container}>
             {attributes.map((attribute, index) => (
@@ -38,5 +60,114 @@ export default function NavBar() {
                 />
             ))}
         </View>
+        // <View style={styles.container}>
+
+        //     <Button
+        //         mode="contained"
+        //         buttonColor="none"
+        //         loading={false}
+        //         contentStyle={styles.button}
+        //         onPress={() => router.replace('/')}
+        //     >
+        //         <View style={{ alignItems: 'center' }}>
+        //             <Icon name='menu' size={24} color="black" />
+        //             <Text style={{ color: 'black' }}>My Trips</Text>
+        //         </View>
+        //     </Button>
+
+        //     <Button
+        //         mode="contained"
+        //         buttonColor="none"
+        //         loading={false}
+        //         contentStyle={styles.button}
+        //         onPress={() => console.log('Pressed')}
+        //     >
+        //         <View style={{ alignItems: 'center' }}>
+        //             <Icon name='plus' size={24} color="black" />
+        //             <Text style={{ color: 'black' }}>New Trip</Text>
+        //         </View>
+        //     </Button>
+
+        //     <Button
+        //         mode="contained"
+        //         buttonColor="none"
+        //         loading={false}
+        //         contentStyle={styles.button}
+        //         onPress={() <View style={styles.container}>
+
+        //     <Button
+        //         mode="contained"
+        //         buttonColor="none"
+        //         loading={false}
+        //         contentStyle={styles.button}
+        //         onPress={() => router.replace('/')}
+        //     >
+        //         <View style={{ alignItems: 'center' }}>
+        //             <Icon name='menu' size={24} color="black" />
+        //             <Text style={{ color: 'black' }}>My Trips</Text>
+        //         </View>
+        //     </Button>
+
+        //     <Button
+        //         mode="contained"
+        //         buttonColor="none"
+        //         loading={false}
+        //         contentStyle={styles.button}
+        //         onPress={() => console.log('Pressed')}
+        //     >
+        //         <View style={{ alignItems: 'center' }}>
+        //             <Icon name='plus' size={24} color="black" />
+        //             <Text style={{ color: 'black' }}>New Trip</Text>
+        //         </View>
+        //     </Button>
+
+        //     <Button
+        //         mode="contained"
+        //         buttonColor="none"
+        //         loading={false}
+        //         contentStyle={styles.button}
+        //         onPress={() => router.replace('/(tabs)/calendar')}
+        //     >
+        //         <View style={{ alignItems: 'center' }}>
+        //             <Icon name='calendar-month' size={24} color="black" />
+        //             <Text style={{ color: 'black' }}>Calendar</Text>
+        //         </View>
+        //     </Button>
+
+        //     <Button
+        //         mode="contained"
+        //         buttonColor="none"
+        //         loading={false}
+        //         contentStyle={styles.button}
+        //         onPress={() => router.replace('/(tabs)/settings')}
+        //     >
+        //         <View style={{ alignItems: 'center' }}>
+        //             <Icon name='cog' size={24} color="black" />
+        //             <Text style={{ color: 'black' }}>Settings</Text>
+        //         </View>
+        //     </Button>
+
+        // </View>=> router.replace('/(tabs)/calendar')}
+        //     >
+        //         <View style={{ alignItems: 'center' }}>
+        //             <Icon name='calendar-month' size={24} color="black" />
+        //             <Text style={{ color: 'black' }}>Calendar</Text>
+        //         </View>
+        //     </Button>
+
+        //     <Button
+        //         mode="contained"
+        //         buttonColor="none"
+        //         loading={false}
+        //         contentStyle={styles.button}
+        //         onPress={() => router.replace('/(tabs)/settings')}
+        //     >
+        //         <View style={{ alignItems: 'center' }}>
+        //             <Icon name='cog' size={24} color="black" />
+        //             <Text style={{ color: 'black' }}>Settings</Text>
+        //         </View>
+        //     </Button>
+
+        // </View>
     );
 }
