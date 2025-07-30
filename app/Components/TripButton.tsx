@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 type props = {
     icon: string,
@@ -38,19 +38,20 @@ export default function TripButton({ icon, text }: props) {
 
 
     return (
-        <TouchableOpacity onPress={() => setPressed(!pressed)}>
+        <>
             {pressed ? (
-                <View style={styles.textIconPressed}>
+                <TouchableOpacity onPress={() => setPressed(!pressed)} style={styles.textIconPressed}>
                     <Ionicons name={icon as keyof typeof Ionicons.glyphMap} size={32} />
                     <Text>{text}</Text>
-                </View>
+                </TouchableOpacity>
             ) : (
-                <View style={styles.textIcon}>
+                <TouchableOpacity onPress={() => setPressed(!pressed)} style={styles.textIcon}>
                     <Ionicons name={icon as keyof typeof Ionicons.glyphMap} size={32} />
                     <Text>{text}</Text>
-                </View>
+                </TouchableOpacity>
             )}
-        </TouchableOpacity>
+        </>
+
     );
 
 

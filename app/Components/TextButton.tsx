@@ -1,15 +1,23 @@
-import { Link, RelativePathString } from 'expo-router';
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { RelativePathString, useRouter } from 'expo-router';
+import { Keyboard, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 type props = {
     text: string,
     link: string
 }
 
-export default function Button({ text, link }: props) {
+export default function TextButton({ text, link }: props) {
+    const router = useRouter();
+
+    const handlePress = () => {
+        Keyboard.dismiss();
+        setTimeout(() => {
+            router.push(link as RelativePathString);
+        }, 100);
+    };
+
     const styles = StyleSheet.create({
-        text: {
-            display: "flex",
+        button: {
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: "#994c00",
@@ -19,12 +27,8 @@ export default function Button({ text, link }: props) {
     });
 
     return (
-        <Link href={link as RelativePathString} asChild>
-            <TouchableOpacity>
-                <View style={styles.text}>
-                    <Text style={{ color: "white" }}>{text}</Text>
-                </View>
-            </TouchableOpacity>
-        </Link>
+        <TouchableOpacity style={styles.button} onPress={handlePress}>
+            <Text style={{ color: "white" }}>{text}</Text>
+        </TouchableOpacity>
     );
 }

@@ -65,6 +65,7 @@ export default function TripType() {
                     <TextButton text="Done" link="/edit-trip" />
                 </View>
             </ScrollView>
+            
         </View>
     );
 }

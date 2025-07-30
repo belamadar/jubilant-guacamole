@@ -1,13 +1,17 @@
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet, TextInput } from "react-native";
 import TextButton from "./Components/TextButton";
+// import { useRouter } from "expo-router";
 
 export default function NewTrip() {
     const [name, setName] = React.useState('');
     const [startDate, setStartDate] = React.useState('');
     const [endDate, setEndDate] = React.useState('');
 
+    // const router = useRouter();
+
     const styles = StyleSheet.create({
+
         constainer: {
             display: "flex",
             flex: 1,
@@ -30,7 +34,7 @@ export default function NewTrip() {
     });
 
     return (
-        <View style={styles.constainer}>
+        <ScrollView contentContainerStyle={styles.constainer} keyboardShouldPersistTaps="handled">
             <TextInput
                 style={styles.input}
                 onChangeText={setName}
@@ -50,6 +54,6 @@ export default function NewTrip() {
                 placeholder={'End Date: MM/DD/YY'}
             />
             <TextButton text="Next" link="/trip-type" />
-        </View>
+        </ScrollView>
     );
 }

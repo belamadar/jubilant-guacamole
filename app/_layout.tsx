@@ -1,11 +1,24 @@
 import { Stack } from "expo-router";
-import { View } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 import NavBar from "./Components/NavBar";
 
 export default function RootLayout() {
 
+  const styles = StyleSheet.create({
+    safeArea: {
+      flex: 1,
+      backgroundColor: "white"
+    },
+
+    container: {
+      flex: 1,
+      position: "relative"
+    }
+  });
+
   return (
-      <View style={{ display: "flex", flex: 1 }}>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
         <Stack>
           <Stack.Screen name="index" options={{ title: "My Trips", headerTitleAlign: "center" }} />
           <Stack.Screen name="new-trip" options={{ title: "New Trip", headerTitleAlign: "center" }} />
@@ -16,6 +29,7 @@ export default function RootLayout() {
         </Stack>
         <NavBar />
       </View>
-      
+    </SafeAreaView>
+
   );
 }

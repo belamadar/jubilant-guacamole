@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Link, RelativePathString } from 'expo-router';
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 type props = {
     icon: string,
@@ -21,10 +21,8 @@ export default function EditButton({ icon, link }: props) {
 
     return (
         <Link href={link as RelativePathString} asChild>
-            <TouchableOpacity>
-                <View style={styles.icon}>
-                    <Ionicons name={icon as keyof typeof Ionicons.glyphMap} color={"white"} size={16} />
-                </View>
+            <TouchableOpacity style={styles.icon}>
+                <Ionicons name={icon as keyof typeof Ionicons.glyphMap} color={"white"} size={16} />
             </TouchableOpacity>
         </Link>
     );
