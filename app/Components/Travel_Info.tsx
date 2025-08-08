@@ -1,6 +1,7 @@
+import { Link } from 'expo-router';
 import { StyleSheet, Text, View } from "react-native";
 import CircularProgress from 'react-native-circular-progress-indicator';
-import Button from "./Button";
+import { IconButton } from "react-native-paper";
 
 type props = {
     location: string,
@@ -60,7 +61,10 @@ export default function Travel_Info({ location, date, progress }: props) {
                     inActiveStrokeWidth={7}
                     maxValue={100}
                 />
-                <Button icon="pencil" text="" style={1} link="/edit-trip" />
+                
+                <Link href="/edit-trip" asChild>
+                    <IconButton icon="pencil" iconColor="white" containerColor="#994c00"/>
+                </Link>
             </View>
         </View>
     );

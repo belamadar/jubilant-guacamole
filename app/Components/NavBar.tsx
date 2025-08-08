@@ -1,6 +1,6 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, View } from "react-native";
-import Button from "./Button";
+import { Link } from 'expo-router';
+import { StyleSheet, Text, View } from "react-native";
+import { IconButton } from "react-native-paper";
 
 export default function NavBar() {
     const styles = StyleSheet.create({
@@ -9,30 +9,43 @@ export default function NavBar() {
             flexDirection: "row",
             justifyContent: "space-between",
             paddingHorizontal: 10,
-            paddingTop: 10,
+            paddingTop: 5,
             paddingBottom: 50,
             backgroundColor: "#fff5ee",
         }
     });
 
-    const attributes = [
-        {icon: "list", text: "My Trips", link: "/"},
-        {icon: "add-outline", text: "New Trip", link: "/new-trip"},
-        {icon: "calendar-outline", text: "Calender", link: "/calendar"},
-        {icon: "settings", text: "Settings", link: "/settings"},
-    ]
-
     return (
         <View style={styles.container}>
-            {attributes.map((attribute, index) => (
-                <Button 
-                    key={index}
-                    icon={attribute.icon as keyof typeof Ionicons.glyphMap} 
-                    text={attribute.text}
-                    style={0}
-                    link={attribute.link}
-                />
-            ))}
+
+            <View>
+                <Link href="/" asChild>
+                    <IconButton icon="format-list-bulleted" iconColor="black" />
+                </Link>
+                <Text>My Trips</Text>
+            </View>
+
+            <View>
+                <Link href="/new-trip" asChild>
+                    <IconButton icon="plus" iconColor="black" />
+                </Link>
+                <Text>New Trip</Text>
+            </View>
+
+            <View>
+                <Link href="/calendar" asChild>
+                    <IconButton icon="calendar" iconColor="black" />
+                </Link>
+                <Text>Calendar</Text>
+            </View>
+
+            <View>
+                <Link href="/settings" asChild>
+                    <IconButton icon="cog" iconColor="black" />
+                </Link>
+                <Text>Settings</Text>
+            </View>
+
         </View>
     );
 }

@@ -5,7 +5,7 @@ import DatePicker from 'react-native-date-picker';
 import { Button } from "react-native-paper";
 
 export default function NewTrip() {
-    const [tripName, setTripName] = useState('');
+    const [tripName, setTripName] = useState("");
 
     const [startDate, setStartDate] = useState(new Date());
     const [startOpen, setStartOpen] = useState(false);
@@ -24,7 +24,7 @@ export default function NewTrip() {
                 style={{ borderWidth: 1, borderColor: "gray", borderRadius: 5, padding: 10, width: "80%", marginTop: 20 }}
             />
 
-            <Button mode="contained" buttonColor="#994c00" onPress={() => setStartOpen(true)}>Select Start Date</Button>
+            <Button mode="contained" buttonColor="#994c00" onPress={() => setStartOpen(!startOpen)}>Select Start Date</Button>
             <DatePicker
                 modal
                 open={startOpen}
@@ -38,7 +38,7 @@ export default function NewTrip() {
                 }}
             />
 
-            <Button mode="contained" buttonColor="#994c00" onPress={() => setEndOpen(true)}>Select End Date</Button>
+            <Button mode="contained" buttonColor="#994c00" onPress={() => setEndOpen(!endOpen)}>Select End Date</Button>
             <DatePicker
                 modal
                 open={endOpen}
@@ -52,10 +52,12 @@ export default function NewTrip() {
                 }}
             />
 
-            {tripName !== '' && startOpen && endOpen && (
+            {tripName !== "" && startOpen && endOpen ? (
                 <Link href="/trip-type" asChild>
-                    <Button mode="contained" buttonColor="#994c00">Next</Button>
+                    <Button mode="contained" buttonColor="#994c00" >Next</Button>
                 </Link>
+            ) : (
+                <Button mode="contained" buttonColor="grey" onPress={() => alert("Pick a title, start date & end date before continuing")}>Next</Button>
             )}
         </ScrollView>
     );
