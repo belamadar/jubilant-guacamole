@@ -1,8 +1,8 @@
 import { ScrollView, Text, View } from "react-native";
-import Travel_Info from "./Components/Travel_Info";
+import Travel_Info from "@/app/Components/Travel_Info";
 
 export default function Index() {
-  const travel_data = require('./Travel_Info.json');
+  const travel_data = require('../Travel_Info.json');
   
   return (
     <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white" }}>
