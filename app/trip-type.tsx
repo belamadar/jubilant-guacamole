@@ -1,5 +1,4 @@
-import { ScrollView, StyleSheet, View } from "react-native";
-import { SolidIcons } from 'react-native-fontawesome';
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-paper";
 
 export default function TripType() {
@@ -8,15 +7,69 @@ export default function TripType() {
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
-            justifyContent: "space-between"
+            justifyContent: "flex-start",
+            gap: 5,
         }
     });
 
     return (
-        <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white" }}>
+        <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white", padding: 40, gap: 10 }}>
+            <Text style={{ marginTop: 10 }}>Transportation</Text>
             <View style={styles.container}>
-                <Button mode="contained" buttonColor="#ed9380" icon={SolidIcons.bus}>transport</Button>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="bus" contentStyle={{
+                    padding: 10
+                }}>Bus</Button>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="airplane" contentStyle={{
+                    padding: 10
+                }}>Airplane</Button>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="ferry" contentStyle={{
+                    padding: 10
+                }}>Ferry</Button>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="car" contentStyle={{
+                    padding: 10
+                }}>Car</Button>
+
             </View>
+            
+            <Text style={{ marginTop: 10 }}>Activities</Text>
+            <View style={styles.container}>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="campfire" contentStyle={{
+                    padding: 10
+                }}>Camping</Button>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="surfing" contentStyle={{
+                    padding: 10
+                }}>Surfing</Button>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="ferry" contentStyle={{
+                    padding: 10
+                }}>Sailing</Button>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="beach" contentStyle={{
+                    padding: 10
+                }}>Beach</Button>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="tie" contentStyle={{
+                    padding: 10
+                }}>Dress-up event</Button>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="sunglasses" contentStyle={{
+                    padding: 10
+                }}>Outdoors</Button>
+
+                <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="hiking" contentStyle={{
+                    padding: 10
+                }}>Hiking</Button>
+
+            </View>
+
+            <Button mode="contained" buttonColor="#994c00">Done</Button>
+            
         </ScrollView>
     );
 }
