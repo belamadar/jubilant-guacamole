@@ -13,6 +13,8 @@ export default function NewTrip() {
     const [endDate, setEndDate] = useState(new Date());
     const [endOpen, setEndOpen] = useState(false);
 
+    const disabled = !(tripName !== "" && startOpen && endOpen);
+
     return (
         <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "center", gap: 10 }}>
             <Text style={{ fontSize: 64, fontWeight: "bold" }}>New Trip</Text>
@@ -52,13 +54,10 @@ export default function NewTrip() {
                 }}
             />
 
-            {tripName !== "" && startOpen && endOpen ? (
-                <Link href="/trip-type" asChild>
-                    <Button mode="contained" buttonColor="#994c00" >Next</Button>
-                </Link>
-            ) : (
-                <Button mode="contained" buttonColor="grey" onPress={() => alert("Pick a title, start date & end date before continuing")}>Next</Button>
-            )}
+            <Link href="/trip-type" asChild>
+                <Button mode="contained" buttonColor="#994c00" disabled={disabled}>Next</Button>
+            </Link>
+
         </ScrollView>
     );
 }
