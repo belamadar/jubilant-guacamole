@@ -22,6 +22,7 @@
     "expo-linking": "~7.1.7",
     "expo-router": "^5.1.4",
     "expo-splash-screen": "~0.30.10",
+    "expo-sqlite": "~15.2.14",
     "expo-status-bar": "~2.2.3",
     "expo-system-ui": "~5.0.10",
     "expo-web-browser": "~14.2.0",
@@ -40,6 +41,7 @@
     "react-native-svg": "^15.12.0",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
+    "uuid": "^11.1.0",
     "vector-icons": "^0.1.0"
   },
   "devDependencies": {
