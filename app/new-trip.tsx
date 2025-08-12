@@ -13,7 +13,7 @@ export default function NewTrip() {
     const [endDate, setEndDate] = useState(new Date());
     const [endOpen, setEndOpen] = useState(false);
 
-    const disabled = !(tripName !== "" && startOpen && endOpen);
+    const disabled = tripName.trim() === "" || startDate >= endDate;
 
     return (
         <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "center", gap: 10 }}>
