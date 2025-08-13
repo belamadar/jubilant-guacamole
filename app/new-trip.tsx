@@ -55,6 +55,7 @@ export default function NewTrip() {
             />
 
             <Link href="/trip-type" asChild>
+                {/* <Button mode="contained" buttonColor="#994c00" disabled={disabled}>Next</Button> */}
                 <Button mode="contained" buttonColor="#994c00" disabled={false}>Next</Button>
             </Link>
 
