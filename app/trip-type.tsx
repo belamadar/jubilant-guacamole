@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-paper";
 
@@ -67,8 +68,10 @@ export default function TripType() {
                 }}>Hiking</Button>
 
             </View>
-
-            <Button mode="contained" buttonColor="#994c00">Done</Button>
+            
+            <Link href="/trip-items" asChild>
+                <Button mode="contained" buttonColor="#994c00">Done</Button>
+            </Link>
             
         </ScrollView>
     );
