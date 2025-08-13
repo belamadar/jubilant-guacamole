@@ -9,8 +9,7 @@ export default function NavBar() {
             flexDirection: "row",
             justifyContent: "space-between",
             paddingHorizontal: 10,
-            paddingTop: 5,
-            paddingBottom: 50,
+            paddingVertical: 5,
             backgroundColor: "#fff5ee",
         }
     });
