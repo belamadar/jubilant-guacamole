@@ -23,7 +23,7 @@ export default function TripItems() {
         menu: {
             left: 0,
             right: 0,
-            transform: [{ translateY: -22 }]    // Pins menu to navbar
+            transform: [{ translateY: -15 }]    // Pins menu to navbar
         },
 
         item: {
@@ -78,11 +78,6 @@ export default function TripItems() {
                     <Menu
                         visible={essentials}
                         onDismiss={closeEssentials}
-                        // anchor={<Button contentStyle={essentials ? styles.button_Pressed : {} }
-                        //                 style={styles.button}
-                        //                 textColor="black" 
-                        //                 icon="checkbox-marked-outline" 
-                        //                 onPress={openEssentials}>Essentials</Button>}
                         anchor={
                             <TouchableOpacity onPress={openEssentials}>
                                 <View style={essentials ? styles.button_Pressed : styles.button}>
@@ -128,11 +123,6 @@ export default function TripItems() {
                     <Menu
                         visible={health}
                         onDismiss={closeHealth}
-                        // anchor={<Button contentStyle={health ? styles.button_Pressed : {} }
-                        //                 style={styles.button}
-                        //                 textColor="black" 
-                        //                 icon="heart-outline" 
-                        //                 onPress={openHealth}>Health</Button>}
                         anchor={
                             <TouchableOpacity onPress={openHealth}>
                                 <View style={health ? styles.button_Pressed : styles.button}>
@@ -178,11 +168,6 @@ export default function TripItems() {
                     <Menu
                         visible={audio}
                         onDismiss={closeAudio}
-                        // anchor={<Button contentStyle={audio ? styles.button_Pressed : {} } 
-                        //                 style={styles.button}
-                        //                 textColor="black" 
-                        //                 icon="music-note-outline" 
-                        //                 onPress={openAudio}>Audio</Button>}
                         anchor={
                             <TouchableOpacity onPress={openAudio}>
                                 <View style={audio ? styles.button_Pressed : styles.button}>
@@ -228,11 +213,6 @@ export default function TripItems() {
                     <Menu
                         visible={tab}
                         onDismiss={closeTab}
-                        // anchor={<Button contentStyle={tab ? styles.button_Pressed : {} }
-                        //                 style={styles.button} 
-                        //                 textColor="black" 
-                        //                 icon="plus" 
-                        //                 onPress={openTab}>Tab</Button>}
                         style={styles.menu}
                         anchor={
                             <TouchableOpacity onPress={openTab}>
