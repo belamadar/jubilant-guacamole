@@ -15,8 +15,8 @@ export default function TripItems() {
 
         container: {
             display: "flex",
+            justifyContent: "center",
             flexDirection: "row",
-            justifyContent: "space-around",
             backgroundColor: "#fff5ee",
         },
 
@@ -35,22 +35,20 @@ export default function TripItems() {
 
         button: {
             display: "flex",
-            flex: 1,
-            gap: 5,
             alignItems: "center",
             flexDirection: "row",
-            padding: 10
+            gap: 5,
+            padding: 10,
         },
 
         button_Pressed: {
             display: "flex",
-            flex: 1,
             flexDirection: "row",
             gap: 5,
             alignItems: "center",
             borderBottomWidth: 2,
             borderBottomColor: "#994c00",
-            padding: 5
+            padding: 10,
         }
 
     });
@@ -88,7 +86,7 @@ export default function TripItems() {
                         anchor={
                             <TouchableOpacity style={essentials ? styles.button_Pressed : styles.button} onPress={openEssentials}>
                                 <MaterialCommunityIcons name="checkbox-marked-outline" size={15}/>
-                                <Text>Essentials</Text>
+                                <Text style={{textAlign: "center"}}>Essentials</Text>
                             </TouchableOpacity>}
                         style={styles.menu}
                         contentStyle={{ backgroundColor: "#fff5ee"}}
@@ -136,7 +134,7 @@ export default function TripItems() {
                         anchor={
                             <TouchableOpacity style={health ? styles.button_Pressed : styles.button} onPress={openHealth}>
                                 <MaterialCommunityIcons name="heart-outline" size={15}/>
-                                <Text>Health</Text>
+                                <Text style={{textAlign: "center"}}>Health</Text>
                             </TouchableOpacity>}
                         style={styles.menu}
                         contentStyle={{ backgroundColor: "#fff5ee"}}
@@ -184,7 +182,7 @@ export default function TripItems() {
                         anchor={
                             <TouchableOpacity style={audio ? styles.button_Pressed : styles.button} onPress={openAudio}>
                                 <MaterialCommunityIcons name="music-note-outline" size={15}/>
-                                <Text>Audio</Text>
+                                <Text style={{textAlign: "center"}}>Audio</Text>
                             </TouchableOpacity>}
                         style={styles.menu}
                         contentStyle={{ backgroundColor: "#fff5ee"}}
@@ -233,7 +231,7 @@ export default function TripItems() {
                         anchor={
                             <TouchableOpacity style={tab ? styles.button_Pressed : styles.button} onPress={openTab}>
                                 <MaterialCommunityIcons name="plus" size={15}/>
-                                <Text>Tab</Text>
+                                <Text style={{textAlign: "center"}}>Tab</Text>
                             </TouchableOpacity>}
                         contentStyle={{ backgroundColor: "#fff5ee"}}
                     >
