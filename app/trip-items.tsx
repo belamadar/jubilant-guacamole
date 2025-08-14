@@ -27,9 +27,9 @@ export default function TripItems() {
         },
 
         item: {
-            display: "flex", 
-            flexDirection: "row", 
-            justifyContent: "space-between", 
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
             alignItems: "center"
         },
 
@@ -84,41 +84,43 @@ export default function TripItems() {
                         //                 icon="checkbox-marked-outline" 
                         //                 onPress={openEssentials}>Essentials</Button>}
                         anchor={
-                            <TouchableOpacity style={essentials ? styles.button_Pressed : styles.button} onPress={openEssentials}>
-                                <MaterialCommunityIcons name="checkbox-marked-outline" size={15}/>
-                                <Text style={{textAlign: "center"}}>Essentials</Text>
+                            <TouchableOpacity onPress={openEssentials}>
+                                <View style={essentials ? styles.button_Pressed : styles.button}>
+                                    <MaterialCommunityIcons name="checkbox-marked-outline" size={15} />
+                                    <Text style={{ textAlign: "center" }}>Essentials</Text>
+                                </View>
                             </TouchableOpacity>}
                         style={styles.menu}
-                        contentStyle={{ backgroundColor: "#fff5ee"}}
+                        contentStyle={{ backgroundColor: "#fff5ee" }}
                     >
 
                         <View style={styles.item}>
-                            <Menu.Item title="Essential item 1" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Essential item 1" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Essential item 2" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Essential item 2" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Essential item 3" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Essential item 3" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Essential item 4" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Essential item 4" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Essential item 5" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Essential item 5" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Essential item 6" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Essential item 6" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
                     </Menu>
@@ -132,41 +134,43 @@ export default function TripItems() {
                         //                 icon="heart-outline" 
                         //                 onPress={openHealth}>Health</Button>}
                         anchor={
-                            <TouchableOpacity style={health ? styles.button_Pressed : styles.button} onPress={openHealth}>
-                                <MaterialCommunityIcons name="heart-outline" size={15}/>
-                                <Text style={{textAlign: "center"}}>Health</Text>
+                            <TouchableOpacity onPress={openHealth}>
+                                <View style={health ? styles.button_Pressed : styles.button}>
+                                    <MaterialCommunityIcons name="heart-outline" size={15} />
+                                    <Text style={{ textAlign: "center" }}>Health</Text>
+                                </View>
                             </TouchableOpacity>}
                         style={styles.menu}
-                        contentStyle={{ backgroundColor: "#fff5ee"}}
+                        contentStyle={{ backgroundColor: "#fff5ee" }}
                     >
 
                         <View style={styles.item}>
-                            <Menu.Item title="Health item 1" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Health item 1" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Health item 2" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Health item 2" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Health item 3" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Health item 3" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Health item 4" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Health item 4" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Health item 5" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Health item 5" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Health item 6" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Health item 6" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
                     </Menu>
@@ -180,41 +184,43 @@ export default function TripItems() {
                         //                 icon="music-note-outline" 
                         //                 onPress={openAudio}>Audio</Button>}
                         anchor={
-                            <TouchableOpacity style={audio ? styles.button_Pressed : styles.button} onPress={openAudio}>
-                                <MaterialCommunityIcons name="music-note-outline" size={15}/>
-                                <Text style={{textAlign: "center"}}>Audio</Text>
+                            <TouchableOpacity onPress={openAudio}>
+                                <View style={audio ? styles.button_Pressed : styles.button}>
+                                    <MaterialCommunityIcons name="music-note-outline" size={15} />
+                                    <Text style={{ textAlign: "center" }}>Audio</Text>
+                                </View>
                             </TouchableOpacity>}
                         style={styles.menu}
-                        contentStyle={{ backgroundColor: "#fff5ee"}}
+                        contentStyle={{ backgroundColor: "#fff5ee" }}
                     >
 
                         <View style={styles.item}>
-                            <Menu.Item title="Audio item 1" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Audio item 1" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Audio item 2" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Audio item 2" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Audio item 3" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Audio item 3" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Audio item 4" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Audio item 4" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Audio item 5" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Audio item 5" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Audio item 6" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Audio item 6" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
                     </Menu>
@@ -229,40 +235,42 @@ export default function TripItems() {
                         //                 onPress={openTab}>Tab</Button>}
                         style={styles.menu}
                         anchor={
-                            <TouchableOpacity style={tab ? styles.button_Pressed : styles.button} onPress={openTab}>
-                                <MaterialCommunityIcons name="plus" size={15}/>
-                                <Text style={{textAlign: "center"}}>Tab</Text>
+                            <TouchableOpacity onPress={openTab}>
+                                <View style={tab ? styles.button_Pressed : styles.button}>
+                                    <MaterialCommunityIcons name="plus" size={15} />
+                                    <Text style={{ textAlign: "center" }}>Tab</Text>
+                                </View>
                             </TouchableOpacity>}
-                        contentStyle={{ backgroundColor: "#fff5ee"}}
+                        contentStyle={{ backgroundColor: "#fff5ee" }}
                     >
 
                         <View style={styles.item}>
-                            <Menu.Item title="Tab item 1" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Tab item 1" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Tab item 2" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Tab item 2" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Tab item 3" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Tab item 3" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Tab item 4" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Tab item 4" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Tab item 5" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Tab item 5" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
 
                         <View style={styles.item}>
-                            <Menu.Item title="Tab item 6" titleStyle={{ color: 'black' }}/>
+                            <Menu.Item title="Tab item 6" titleStyle={{ color: 'black' }} />
                             <CheckBox />
                         </View>
                     </Menu>
