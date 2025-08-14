@@ -8,8 +8,9 @@ export default function NavBar() {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            paddingHorizontal: 10,
-            paddingVertical: 5,
+            paddingTop: 10,
+            paddingBottom: 50,
+            paddingHorizontal: 5,
             backgroundColor: "#fff5ee",
         }
     });

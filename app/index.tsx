@@ -1,4 +1,6 @@
+// import { Link } from "expo-router";
 import { ScrollView, Text, View } from "react-native";
+// import { Button } from "react-native-paper";
 import Travel_Info from "./Components/Travel_Info";
 
 export default function Index() {
@@ -19,6 +21,10 @@ export default function Index() {
             <Travel_Info key={index} location={item.location.toString()} date={item.date.toString()} progress={parseInt(item.progress)} />
           ))
         )}
+
+        {/* <Link href="/trip-items" asChild>
+          <Button mode="contained" buttonColor="#994c00">Done</Button>
+        </Link> */}
 
       </View>
     </ScrollView>

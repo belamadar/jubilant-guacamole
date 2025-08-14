@@ -1,6 +1,7 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
-import { Button, Menu, PaperProvider } from "react-native-paper";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Menu, PaperProvider } from "react-native-paper";
 import CheckBox from "./Components/CheckBox";
 
 export default function TripItems() {
@@ -15,8 +16,7 @@ export default function TripItems() {
         container: {
             display: "flex",
             flexDirection: "row",
-            justifyContent: "center",
-            gap: 10,
+            justifyContent: "space-around",
             backgroundColor: "#fff5ee",
         },
 
@@ -34,14 +34,23 @@ export default function TripItems() {
         },
 
         button: {
-            borderWidth: 0,
-            borderRadius: 0
+            display: "flex",
+            flex: 1,
+            gap: 5,
+            alignItems: "center",
+            flexDirection: "row",
+            padding: 10
         },
 
         button_Pressed: {
+            display: "flex",
+            flex: 1,
+            flexDirection: "row",
+            gap: 5,
+            alignItems: "center",
             borderBottomWidth: 2,
             borderBottomColor: "#994c00",
-            overflow: "visible"
+            padding: 5
         }
 
     });
@@ -71,11 +80,16 @@ export default function TripItems() {
                     <Menu
                         visible={essentials}
                         onDismiss={closeEssentials}
-                        anchor={<Button contentStyle={essentials ? styles.button_Pressed : {} }
-                                        style={styles.button}
-                                        textColor="black" 
-                                        icon="checkbox-marked-outline" 
-                                        onPress={openEssentials}>Essentials</Button>}
+                        // anchor={<Button contentStyle={essentials ? styles.button_Pressed : {} }
+                        //                 style={styles.button}
+                        //                 textColor="black" 
+                        //                 icon="checkbox-marked-outline" 
+                        //                 onPress={openEssentials}>Essentials</Button>}
+                        anchor={
+                            <TouchableOpacity style={essentials ? styles.button_Pressed : styles.button} onPress={openEssentials}>
+                                <MaterialCommunityIcons name="checkbox-marked-outline" size={15}/>
+                                <Text>Essentials</Text>
+                            </TouchableOpacity>}
                         style={styles.menu}
                         contentStyle={{ backgroundColor: "#fff5ee"}}
                     >
@@ -114,11 +128,16 @@ export default function TripItems() {
                     <Menu
                         visible={health}
                         onDismiss={closeHealth}
-                        anchor={<Button contentStyle={health ? styles.button_Pressed : {} }
-                                        style={styles.button}
-                                        textColor="black" 
-                                        icon="heart-outline" 
-                                        onPress={openHealth}>Health</Button>}
+                        // anchor={<Button contentStyle={health ? styles.button_Pressed : {} }
+                        //                 style={styles.button}
+                        //                 textColor="black" 
+                        //                 icon="heart-outline" 
+                        //                 onPress={openHealth}>Health</Button>}
+                        anchor={
+                            <TouchableOpacity style={health ? styles.button_Pressed : styles.button} onPress={openHealth}>
+                                <MaterialCommunityIcons name="heart-outline" size={15}/>
+                                <Text>Health</Text>
+                            </TouchableOpacity>}
                         style={styles.menu}
                         contentStyle={{ backgroundColor: "#fff5ee"}}
                     >
@@ -157,11 +176,16 @@ export default function TripItems() {
                     <Menu
                         visible={audio}
                         onDismiss={closeAudio}
-                        anchor={<Button contentStyle={audio ? styles.button_Pressed : {} } 
-                                        style={styles.button}
-                                        textColor="black" 
-                                        icon="music-note-outline" 
-                                        onPress={openAudio}>Audio</Button>}
+                        // anchor={<Button contentStyle={audio ? styles.button_Pressed : {} } 
+                        //                 style={styles.button}
+                        //                 textColor="black" 
+                        //                 icon="music-note-outline" 
+                        //                 onPress={openAudio}>Audio</Button>}
+                        anchor={
+                            <TouchableOpacity style={audio ? styles.button_Pressed : styles.button} onPress={openAudio}>
+                                <MaterialCommunityIcons name="music-note-outline" size={15}/>
+                                <Text>Audio</Text>
+                            </TouchableOpacity>}
                         style={styles.menu}
                         contentStyle={{ backgroundColor: "#fff5ee"}}
                     >
@@ -200,12 +224,17 @@ export default function TripItems() {
                     <Menu
                         visible={tab}
                         onDismiss={closeTab}
-                        anchor={<Button contentStyle={tab ? styles.button_Pressed : {} }
-                                        style={styles.button} 
-                                        textColor="black" 
-                                        icon="plus" 
-                                        onPress={openTab}>Tab</Button>}
+                        // anchor={<Button contentStyle={tab ? styles.button_Pressed : {} }
+                        //                 style={styles.button} 
+                        //                 textColor="black" 
+                        //                 icon="plus" 
+                        //                 onPress={openTab}>Tab</Button>}
                         style={styles.menu}
+                        anchor={
+                            <TouchableOpacity style={tab ? styles.button_Pressed : styles.button} onPress={openTab}>
+                                <MaterialCommunityIcons name="plus" size={15}/>
+                                <Text>Tab</Text>
+                            </TouchableOpacity>}
                         contentStyle={{ backgroundColor: "#fff5ee"}}
                     >
 
