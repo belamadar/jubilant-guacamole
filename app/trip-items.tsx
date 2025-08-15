@@ -53,7 +53,7 @@ export default function TripItems() {
 
     });
 
-    const [essentials, setEssentials] = useState(true);
+    const [essentials, setEssentials] = useState(false);
     const openEssentials = () => setEssentials(true);
     const closeEssentials = () => setEssentials(false);
 
@@ -70,11 +70,9 @@ export default function TripItems() {
     const closeTab = () => setTab(false);
 
     return (
-
         <ScrollView contentContainerStyle={styles.main_container}>
             <PaperProvider>
                 <View style={styles.container}>
-
                     <Menu
                         visible={essentials}
                         onDismiss={closeEssentials}
@@ -257,8 +255,7 @@ export default function TripItems() {
 
                 </View>
             </PaperProvider>
-
+            <Text style={{ textAlign: "center", fontSize: 32, fontWeight: "bold", padding: 10 }}>Select items for your trip from the menu above</Text>
         </ScrollView>
     );
 }
-
