@@ -22,6 +22,7 @@ export default function Index() {
           ))
         )}
 
+        {/*For testing on expo go*/}
         {/* <Link href="/trip-items" asChild>
           <Button mode="contained" buttonColor="#994c00">Done</Button>
         </Link> */}

@@ -1,10 +1,14 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Menu, PaperProvider } from "react-native-paper";
-import CheckBox from "./Components/CheckBox";
+
+import CheckBox from './Components/CheckBox';
 
 export default function TripItems() {
+    const [essentials, setEssentials] = useState(true);
+    const [health, setHealth] = useState(false);
+    const [audio, setAudio] = useState(false);
+    const [tab, setTab] = useState(false);
 
     const styles = StyleSheet.create({
         main_container: {
@@ -13,266 +17,177 @@ export default function TripItems() {
             backgroundColor: "white"
         },
 
-        container: {
+        nav_container: {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-around",
             backgroundColor: "#fff5ee",
+            marginBottom: 1
         },
 
-        menu: {
-            left: 0,
-            right: 0,
-            transform: [{ translateY: -22 }]    // Pins menu to navbar
+        menu_container: {
+            backgroundColor: "#fff5ee",
+            borderBottomWidth: 1,
+            borderBottomColor: "#eeeee4",
+            elevation: 5 
         },
 
         item: {
-            display: "flex", 
-            flexDirection: "row", 
-            justifyContent: "space-between", 
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
             alignItems: "center"
         },
 
         button: {
             display: "flex",
-            flex: 1,
             gap: 5,
+            padding: 5,
             alignItems: "center",
             flexDirection: "row",
-            padding: 10
         },
 
         button_Pressed: {
             display: "flex",
-            flex: 1,
             flexDirection: "row",
             gap: 5,
+            padding: 5,
             alignItems: "center",
             borderBottomWidth: 2,
             borderBottomColor: "#994c00",
-            padding: 5
         }
+
 
     });
 
-    const [essentials, setEssentials] = useState(true);
-    const openEssentials = () => setEssentials(true);
-    const closeEssentials = () => setEssentials(false);
+    const showEssentials = () => {
+        if (!essentials) {
+            setEssentials(true);
+            setHealth(false);
+            setAudio(false);
+            setTab(false);
+        }
+    }
 
-    const [health, setHealth] = useState(false);
-    const openHealth = () => setHealth(true);
-    const closeHealth = () => setHealth(false);
+    const showHealth = () => {
+        if (!health) {
+            setHealth(true);
+            setEssentials(false);
+            setAudio(false);
+            setTab(false);
+        }
+    }
 
-    const [audio, setAudio] = useState(false);
-    const openAudio = () => setAudio(true);
-    const closeAudio = () => setAudio(false);
+    const showAudio = () => {
+        if (!audio) {
+            setAudio(true);
+            setHealth(false);
+            setEssentials(false);
+            setTab(false);
+        }
 
-    const [tab, setTab] = useState(false);
-    const openTab = () => setTab(true);
-    const closeTab = () => setTab(false);
+    }
+
+    const showTab = () => {
+        if (!tab) {
+            setTab(true);
+            setAudio(false);
+            setHealth(false);
+            setEssentials(false);
+        }
+    }
+
+    const essentialItems = ["Essential item 1", "Essential item 2", "Essential item 3",
+        "Essential item 4", "Essential item 5", "Essential item 6"];
+
+    const healthItems = ["Health item 1", "Health item 2", "Health item 3",
+        "Health item 4", "Health item 5", "Health item 6"];
+
+    const audioItems = ["Audio item 1", "Audio item 2", "Audio item 3",
+        "Audio item 4", "Audio item 5", "Audio item 6"];
+
+    const tabItems = ["Tab item 1", "Tab item 2", "Tab item 3",
+        "Tab item 4", "Tab item 5", "Tab item 6"];
 
     return (
-
         <ScrollView contentContainerStyle={styles.main_container}>
-            <PaperProvider>
-                <View style={styles.container}>
+            <View style={styles.nav_container}>
 
-                    <Menu
-                        visible={essentials}
-                        onDismiss={closeEssentials}
-                        // anchor={<Button contentStyle={essentials ? styles.button_Pressed : {} }
-                        //                 style={styles.button}
-                        //                 textColor="black" 
-                        //                 icon="checkbox-marked-outline" 
-                        //                 onPress={openEssentials}>Essentials</Button>}
-                        anchor={
-                            <TouchableOpacity style={essentials ? styles.button_Pressed : styles.button} onPress={openEssentials}>
-                                <MaterialCommunityIcons name="checkbox-marked-outline" size={15}/>
-                                <Text>Essentials</Text>
-                            </TouchableOpacity>}
-                        style={styles.menu}
-                        contentStyle={{ backgroundColor: "#fff5ee"}}
-                    >
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Essential item 1" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Essential item 2" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Essential item 3" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Essential item 4" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Essential item 5" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Essential item 6" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-                    </Menu>
-
-                    <Menu
-                        visible={health}
-                        onDismiss={closeHealth}
-                        // anchor={<Button contentStyle={health ? styles.button_Pressed : {} }
-                        //                 style={styles.button}
-                        //                 textColor="black" 
-                        //                 icon="heart-outline" 
-                        //                 onPress={openHealth}>Health</Button>}
-                        anchor={
-                            <TouchableOpacity style={health ? styles.button_Pressed : styles.button} onPress={openHealth}>
-                                <MaterialCommunityIcons name="heart-outline" size={15}/>
-                                <Text>Health</Text>
-                            </TouchableOpacity>}
-                        style={styles.menu}
-                        contentStyle={{ backgroundColor: "#fff5ee"}}
-                    >
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Health item 1" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Health item 2" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Health item 3" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Health item 4" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Health item 5" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Health item 6" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-                    </Menu>
-
-                    <Menu
-                        visible={audio}
-                        onDismiss={closeAudio}
-                        // anchor={<Button contentStyle={audio ? styles.button_Pressed : {} } 
-                        //                 style={styles.button}
-                        //                 textColor="black" 
-                        //                 icon="music-note-outline" 
-                        //                 onPress={openAudio}>Audio</Button>}
-                        anchor={
-                            <TouchableOpacity style={audio ? styles.button_Pressed : styles.button} onPress={openAudio}>
-                                <MaterialCommunityIcons name="music-note-outline" size={15}/>
-                                <Text>Audio</Text>
-                            </TouchableOpacity>}
-                        style={styles.menu}
-                        contentStyle={{ backgroundColor: "#fff5ee"}}
-                    >
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Audio item 1" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Audio item 2" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Audio item 3" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Audio item 4" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Audio item 5" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Audio item 6" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-                    </Menu>
-
-                    <Menu
-                        visible={tab}
-                        onDismiss={closeTab}
-                        // anchor={<Button contentStyle={tab ? styles.button_Pressed : {} }
-                        //                 style={styles.button} 
-                        //                 textColor="black" 
-                        //                 icon="plus" 
-                        //                 onPress={openTab}>Tab</Button>}
-                        style={styles.menu}
-                        anchor={
-                            <TouchableOpacity style={tab ? styles.button_Pressed : styles.button} onPress={openTab}>
-                                <MaterialCommunityIcons name="plus" size={15}/>
-                                <Text>Tab</Text>
-                            </TouchableOpacity>}
-                        contentStyle={{ backgroundColor: "#fff5ee"}}
-                    >
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Tab item 1" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Tab item 2" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Tab item 3" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Tab item 4" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Tab item 5" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-
-                        <View style={styles.item}>
-                            <Menu.Item title="Tab item 6" titleStyle={{ color: 'black' }}/>
-                            <CheckBox />
-                        </View>
-                    </Menu>
-
+                <View style={essentials ? styles.button_Pressed : styles.button}>
+                    <TouchableOpacity onPress={showEssentials} style={{ display: "flex", flexDirection: "row", gap: 5 }}>
+                        <MaterialCommunityIcons name="checkbox-marked-outline" size={15} />
+                        <Text style={{ textAlign: "center" }}>Essentials</Text>
+                    </TouchableOpacity>
                 </View>
-            </PaperProvider>
 
-        </ScrollView>
+                <View style={health ? styles.button_Pressed : styles.button}>
+                    <TouchableOpacity onPress={showHealth} style={{ flexDirection: "row", gap: 5 }}>
+                        <MaterialCommunityIcons name="heart-outline" size={15} />
+                        <Text style={{ textAlign: "center" }}>Health</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={audio ? styles.button_Pressed : styles.button}>
+                    <TouchableOpacity onPress={showAudio} style={{ flexDirection: "row", gap: 5 }}>
+                        <MaterialCommunityIcons name="music-note-outline" size={15} />
+                        <Text style={{ textAlign: "center" }}>Audio</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={tab ? styles.button_Pressed : styles.button}>
+                    <TouchableOpacity onPress={showTab} style={{ flexDirection: "row", gap: 5 }}>
+                        <MaterialCommunityIcons name="plus" size={15} />
+                        <Text style={{ textAlign: "center" }}>Tab</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
+            {essentials && (
+                <View style={styles.menu_container}>
+                    {essentialItems.map((item: string, index: number) => (
+                        <View key={index} style={styles.item}>
+                            <Text style={{ marginLeft: 5 }}>{item}</Text>
+                            <CheckBox />
+                        </View>
+                    ))}
+                </View>
+            )}
+
+            {health && (
+                <View style={styles.menu_container}>
+                    {healthItems.map((item: string, index: number) => (
+                        <View key={index} style={styles.item}>
+                            <Text style={{ marginLeft: 5 }}>{item}</Text>
+                            <CheckBox />
+                        </View>
+                    ))}
+                </View>
+            )}
+
+            {audio && (
+                <View style={styles.menu_container}>
+                    {audioItems.map((item: string, index: number) => (
+                        <View key={index} style={styles.item}>
+                            <Text style={{ marginLeft: 5 }}>{item}</Text>
+                            <CheckBox />
+                        </View>
+                    ))}
+                </View>
+            )}
+
+            {tab && (
+                <View style={styles.menu_container}>
+                    {tabItems.map((item: string, index: number) => (
+                        <View key={index} style={styles.item}>
+                            <Text style={{ marginLeft: 5 }}>{item}</Text>
+                            <CheckBox />
+                        </View>
+                    ))}
+                </View>
+            )}
+
+        </ScrollView >
     );
+
 }
 
