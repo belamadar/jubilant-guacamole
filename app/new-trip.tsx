@@ -62,12 +62,12 @@ export default function NewTrip() {
                 }}
             />
 
-            <Button mode='contained' buttonColor="#994c00" disabled={confirm} onPress={addData}>Confirm</Button>
+            <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>Confirm</Button>
             {/* <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>Confirm</Button> */}
 
             <Link href="/trip-type" asChild>
-                {/* <Button mode="contained" buttonColor="#994c00" disabled={disabled}>Next</Button> */}
-                <Button mode="contained" buttonColor="#994c00" disabled={false}>Next</Button>
+                <Button mode="contained" buttonColor="#994c00" disabled={next}>Next</Button>
+                {/* <Button mode="contained" buttonColor="#994c00" disabled={false}>Next</Button> */}
             </Link>
 
         </ScrollView>
