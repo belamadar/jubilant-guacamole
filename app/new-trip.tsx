@@ -69,8 +69,8 @@ export default function NewTrip() {
                 }}
             />
 
-            <Button mode='contained' buttonColor="#994c00" disabled={confirm} onPress={addData}>{textContent}</Button>
-            {/* <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>{textContent}</Button> */}
+            {/* <Button mode='contained' buttonColor="#994c00" disabled={confirm} onPress={addData}>{textContent}</Button> */}
+            <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>{textContent}</Button>
 
             <Link href="/trip-type" asChild>
                 <Button mode="contained" buttonColor="#994c00" disabled={next}>Next</Button>

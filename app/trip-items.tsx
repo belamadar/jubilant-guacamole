@@ -21,7 +21,8 @@ export default function TripItems() {
             justifyContent: "center",
             flexDirection: "row",
             backgroundColor: "#fff5ee",
-            marginBottom: 1
+            marginBottom: 1,
+            padding: 10
         },
 
         menu_container: {
@@ -35,7 +36,8 @@ export default function TripItems() {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            alignItems: "center"
+            alignItems: "center",
+            padding: 10
         },
 
         button: {
