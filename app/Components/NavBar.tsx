@@ -8,8 +8,8 @@ export default function NavBar() {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            paddingTop: 10,
-            paddingBottom: 50,
+            paddingTop: 5,
+            paddingBottom: 10,
             paddingHorizontal: 5,
             backgroundColor: "#fff5ee",
         }
