@@ -9,8 +9,6 @@ export default function TripItems() {
     const [audio, setAudio] = useState(false);
     const [tab, setTab] = useState(false);
 
-    
-
     const styles = StyleSheet.create({
         main_container: {
             display: "flex",

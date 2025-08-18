@@ -20,17 +20,13 @@ export default function NewTrip() {
     const addData = () => {
         if (textContent === 'Confirm') {
             setTextContent('Reset');
-            sessionStorage.setItem('tripName', tripName);
-            sessionStorage.setItem('startDate', startDate.toDateString());
-            sessionStorage.setItem('endDate', endDate.toDateString());
         } else {
             setTextContent('Confirm');
-            sessionStorage.clear();
             setTripName("");
             setStartDate(new Date());
             setEndDate(new Date());
         }
-        
+
         setNext(!next);
     }
 
