@@ -10,10 +10,10 @@ function evalFormula(formula: string, { days, temp=null, rain=null }: Ctx) {
 }
 
 export const repo = {
-  createTrip({ id, destination, start_date, end_date, notes }: any) {
+  createTrip({ destination, start_date, end_date, notes }: any) {
     db.runSync(
-      `INSERT INTO trip (id,destination,start_date,end_date,notes) VALUES (?,?,?,?,?);`,
-      [id, destination, start_date, end_date, notes ?? null]
+      `INSERT INTO trip (destination,start_date,end_date,notes) VALUES (?,?,?,?);`,
+      [destination, start_date, end_date, notes ?? null]
     );
   },
 
@@ -108,7 +108,14 @@ export const repo = {
   },
 
   getAllTrips() {
-    let query = `SELECT * FROM trip`;
+    let query = `SELECT * FROM trip;`;
     return db.getAllSync(query);
+  },
+
+  deleteTrip(destination: string) {
+    db.runSync(
+      `DELETE FROM trip WHERE destination = ?;`,
+      [destination]
+    );
   }
 };

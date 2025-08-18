@@ -1,3 +1,4 @@
+import { repo } from "@/assets/db/repo";
 import { Link } from 'expo-router';
 import { useState } from "react";
 import { ScrollView, Text, TextInput } from "react-native";
@@ -14,13 +15,22 @@ export default function NewTrip() {
     const [endOpen, setEndOpen] = useState(false);
 
     const confirm = tripName.trim() === "" || startDate >= endDate;
-    let next :boolean = false;
+    const [textContent, setTextContent] = useState('Confirm');
+    const [next, setNext] = useState(true);
 
     const addData = () => {
-        sessionStorage.setItem('tripName', tripName);
-        sessionStorage.setItem('startDate', startDate.toDateString());
-        sessionStorage.setItem('endDate', endDate.toDateString());
-        next = true;
+        if (textContent === 'Confirm') {
+            repo.createTrip({destination: tripName, start_date: startDate.toDateString(), end_date: endDate.toDateString()});
+            setTextContent('Reset');
+        } else {
+            repo.deleteTrip(tripName);
+            setTextContent('Confirm');
+            setTripName("");
+            setStartDate(new Date());
+            setEndDate(new Date());
+        }
+
+        setNext(!next);
     }
 
     return (
@@ -62,8 +72,8 @@ export default function NewTrip() {
                 }}
             />
 
-            <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>Confirm</Button>
-            {/* <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>Confirm</Button> */}
+            <Button mode='contained' buttonColor="#994c00" disabled={confirm} onPress={addData}>{textContent}</Button>
+            {/* <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>{textContent}</Button> */}
 
             <Link href="/trip-type" asChild>
                 <Button mode="contained" buttonColor="#994c00" disabled={next}>Next</Button>

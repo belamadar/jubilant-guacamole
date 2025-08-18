@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS rule (
 );
 
 CREATE TABLE IF NOT EXISTS trip (
-  id TEXT PRIMARY KEY,
-  destination TEXT,
+  id TEXT PRIMARY KEY AUTOINCREMENT,
+  destination TEXT UNIQUE,
   start_date TEXT NOT NULL,
   end_date TEXT NOT NULL,
   notes TEXT,
