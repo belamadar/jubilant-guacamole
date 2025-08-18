@@ -4,6 +4,14 @@ import { Button } from "react-native-paper";
 
 export default function TripType() {
     const styles = StyleSheet.create({
+        scroll_Container: {
+            display: "flex", 
+            flex: 1, 
+            backgroundColor: "white", 
+            paddingHorizontal: 40, 
+            gap: 10
+        },
+
         container: {
             display: "flex",
             flexDirection: "row",
@@ -14,7 +22,7 @@ export default function TripType() {
     });
 
     return (
-        <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white", padding: 40, gap: 10 }}>
+        <ScrollView contentContainerStyle={styles.scroll_Container}>
             <Text style={{ marginTop: 10 }}>Transportation</Text>
             <View style={styles.container}>
 
