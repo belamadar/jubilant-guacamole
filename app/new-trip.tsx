@@ -1,3 +1,4 @@
+import { repo } from "@/assets/db/repo";
 import { Link } from 'expo-router';
 import { useState } from "react";
 import { ScrollView, Text, TextInput } from "react-native";
@@ -19,8 +20,10 @@ export default function NewTrip() {
 
     const addData = () => {
         if (textContent === 'Confirm') {
+            repo.createTrip({destination: tripName, start_date: startDate.toDateString(), end_date: endDate.toDateString()});
             setTextContent('Reset');
         } else {
+            repo.deleteTrip(tripName);
             setTextContent('Confirm');
             setTripName("");
             setStartDate(new Date());

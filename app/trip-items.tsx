@@ -21,8 +21,8 @@ export default function TripItems() {
             justifyContent: "center",
             flexDirection: "row",
             backgroundColor: "#fff5ee",
-            marginBottom: 1,
-            padding: 10
+            padding: 10,
+            marginBottom: 1
         },
 
         menu_container: {
