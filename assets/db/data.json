@@ -1,0 +1,32 @@
+{
+  "activities": [
+    { "id": "act_hiking", "name": "Hiking" },
+    { "id": "act_swimming", "name": "Swimming" }
+  ],
+  "transport_modes": [
+    { "id": "trn_plane", "name": "Plane" },
+    { "id": "trn_train", "name": "Train" }
+  ],
+  "items": [
+    { "id": "itm_boxers", "name": "Boxers/Panties", "category": "clothing", "default_unit": "pcs" },
+    { "id": "itm_toothbrush", "name": "Toothbrush", "category": "hygiene", "default_unit": "pcs" }
+  ],
+  "rules": [
+    {
+      "id": "r_underwear_daily",
+      "activity_id": null,
+      "transport_id": null,
+      "item_id": "itm_boxers",
+      "formula": "days * 1",
+      "note": "One per day"
+    },
+    {
+      "id": "r_hiking_boots",
+      "activity_id": "act_hiking",
+      "transport_id": null,
+      "item_id": "itm_hiking_boots",
+      "formula": "1",
+      "note": "Essential for hiking"
+    }
+  ]
+}
