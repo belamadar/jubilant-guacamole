@@ -1,10 +1,17 @@
 // import { Link } from "expo-router";
 import { ScrollView, Text, View } from "react-native";
 // import { Button } from "react-native-paper";
+import { repo } from "@/assets/db/repo";
 import Travel_Info from "./Components/Travel_Info";
 
 export default function Index() {
-  const travel_data = require('./Travel_Info.json');
+  let travel_data: any[] = [];
+
+  try {
+    travel_data = repo.getAllTrips();
+  } catch (error) {
+    console.log(error);
+  }
 
   return (
     <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white" }}>

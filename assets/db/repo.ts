@@ -105,5 +105,10 @@ export const repo = {
     if (onlyChecked === false) q += ` AND ti.checked=0`;
     q += ` ORDER BY i.category, i.name;`;
     return db.getAllSync(q, params);
+  },
+
+  getAllTrips() {
+    let query = `SELECT * FROM trip`;
+    return db.getAllSync(query);
   }
 };

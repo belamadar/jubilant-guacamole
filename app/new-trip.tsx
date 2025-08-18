@@ -13,7 +13,15 @@ export default function NewTrip() {
     const [endDate, setEndDate] = useState(new Date());
     const [endOpen, setEndOpen] = useState(false);
 
-    const disabled = tripName.trim() === "" || startDate >= endDate;
+    const confirm = tripName.trim() === "" || startDate >= endDate;
+    let next :boolean = false;
+
+    const addData = () => {
+        sessionStorage.setItem('tripName', tripName);
+        sessionStorage.setItem('startDate', startDate.toDateString());
+        sessionStorage.setItem('endDate', endDate.toDateString());
+        next = true;
+    }
 
     return (
         <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "center", gap: 10 }}>
@@ -53,6 +61,9 @@ export default function NewTrip() {
                     setEndOpen(false);
                 }}
             />
+
+            <Button mode='contained' buttonColor="#994c00" disabled={confirm} onPress={addData}>Confirm</Button>
+            {/* <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>Confirm</Button> */}
 
             <Link href="/trip-type" asChild>
                 {/* <Button mode="contained" buttonColor="#994c00" disabled={disabled}>Next</Button> */}
