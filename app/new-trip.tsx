@@ -13,7 +13,26 @@ export default function NewTrip() {
     const [endDate, setEndDate] = useState(new Date());
     const [endOpen, setEndOpen] = useState(false);
 
-    const disabled = tripName.trim() === "" || startDate >= endDate;
+    const confirm = tripName.trim() === "" || startDate >= endDate;
+    const [textContent, setTextContent] = useState('Confirm');
+    const [next, setNext] = useState(true);
+
+    const addData = () => {
+        if (textContent === 'Confirm') {
+            setTextContent('Reset');
+            sessionStorage.setItem('tripName', tripName);
+            sessionStorage.setItem('startDate', startDate.toDateString());
+            sessionStorage.setItem('endDate', endDate.toDateString());
+        } else {
+            setTextContent('Confirm');
+            sessionStorage.clear();
+            setTripName("");
+            setStartDate(new Date());
+            setEndDate(new Date());
+        }
+        
+        setNext(!next);
+    }
 
     return (
         <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "center", gap: 10 }}>
@@ -54,8 +73,11 @@ export default function NewTrip() {
                 }}
             />
 
+            <Button mode='contained' buttonColor="#994c00" disabled={confirm} onPress={addData}>{textContent}</Button>
+            {/* <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>{textContent}</Button> */}
+
             <Link href="/trip-type" asChild>
-                <Button mode="contained" buttonColor="#994c00" disabled={disabled}>Next</Button>
+                <Button mode="contained" buttonColor="#994c00" disabled={next}>Next</Button>
                 {/* <Button mode="contained" buttonColor="#994c00" disabled={false}>Next</Button> */}
             </Link>
 

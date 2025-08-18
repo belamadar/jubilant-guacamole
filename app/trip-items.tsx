@@ -1,7 +1,6 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
 import CheckBox from './Components/CheckBox';
 
 export default function TripItems() {
@@ -9,6 +8,8 @@ export default function TripItems() {
     const [health, setHealth] = useState(false);
     const [audio, setAudio] = useState(false);
     const [tab, setTab] = useState(false);
+
+    
 
     const styles = StyleSheet.create({
         main_container: {
