@@ -63,7 +63,7 @@ export default function TripType() {
             return newPressed;
         });
 
-        setDone(transportation.length > 0 && activities.length > 0);
+        setDone(transportation.length > 0 || activities.length > 0);
     }
 
     const pushActivity = (item: string, index: number) => {
