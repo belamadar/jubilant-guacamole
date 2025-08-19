@@ -117,5 +117,10 @@ export const repo = {
       `DELETE FROM trip WHERE destination = ?;`,
       [destination]
     );
+  },
+
+  deleteAllTrips() {
+    let query = `DELETE FROM trip;`
+    db.runSync(query);
   }
 };

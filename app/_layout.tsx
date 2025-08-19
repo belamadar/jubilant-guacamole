@@ -10,8 +10,8 @@ export default function RootLayout() {
     container: {
       display: "flex",
       flex: 1,
-      backgroundColor: "shite",
-      paddingTop: insets.top,
+      backgroundColor: "white",
+      // paddingTop: insets.top,
       paddingBottom: insets.bottom,
       paddingLeft: insets.left,
       paddingRight: insets.right
@@ -21,13 +21,13 @@ export default function RootLayout() {
   return (
       <View style={styles.container}>
         <Stack>
-          <Stack.Screen name="index" options={{ title: "My Trips", headerTitleAlign: "center" }} />
-          <Stack.Screen name="new-trip" options={{ title: "New Trip", headerTitleAlign: "center" }} />
-          <Stack.Screen name="trip-type" options={{ title: "New Trip", headerTitleAlign: "center" }} />
-          <Stack.Screen name="trip-items" options={{ title: "New Trip", headerTitleAlign: "center" }} />
-          <Stack.Screen name="calendar" options={{ title: "Calendar", headerTitleAlign: "center" }} />
-          <Stack.Screen name="settings" options={{ title: "Settings", headerTitleAlign: "center" }} />
-          <Stack.Screen name="edit-trip" options={{ title: "Edit Trip", headerTitleAlign: "center" }} />
+          <Stack.Screen name="index" options={{ title: "My Trips", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
+          <Stack.Screen name="new-trip" options={{ title: "New Trip", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
+          <Stack.Screen name="trip-type" options={{ title: "New Trip", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
+          <Stack.Screen name="trip-items" options={{ title: "New Trip", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
+          <Stack.Screen name="calendar" options={{ title: "Calendar", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
+          <Stack.Screen name="settings" options={{ title: "Settings", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
+          <Stack.Screen name="edit-trip" options={{ title: "Edit Trip", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
         </Stack>
         <NavBar/>
       </View>
