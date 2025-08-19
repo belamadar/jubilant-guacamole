@@ -30,7 +30,7 @@ export default function Index() {
   }
 
   const promptDelete = () => {
-    Alert.prompt(
+    Alert.alert(
       "Delete all trips",
       "Are you sure you want to delete all trips?",
       [
@@ -62,7 +62,7 @@ export default function Index() {
           {travel_data.map((item: any, index: number) => (
             <Travel_Info key={index} location={item.destination} date={item.start_date} progress={70} />
           ))}
-          <Button mode="contained" buttonColor="#994c00" textColor="white" onPress={() => promptDelete}>Delete all trips</Button>
+          <Button mode="contained" buttonColor="#994c00" textColor="white" onPress={promptDelete}>Delete all trips</Button>
         </ScrollView>
       )}
 
