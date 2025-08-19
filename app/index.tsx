@@ -8,6 +8,7 @@ import Travel_Info from "./Components/Travel_Info";
 export default function Index() {
   let travel_data: any[] = [];
   const [err, setError] = useState("");
+  const [dummy, setDummy] = useState(false);
 
   const styles = StyleSheet.create({
     container: {
@@ -25,7 +26,6 @@ export default function Index() {
   try {
     travel_data = repo.getAllTrips();
   } catch (error) {
-    console.log(error);
     setError(error instanceof Error ? error.message : String(error));
   }
 
@@ -39,6 +39,9 @@ export default function Index() {
           text: "Delete",
           onPress: () => {
             repo.deleteAllTrips();
+      
+            //Force re-render upon deleting data (Not optimal)
+            setDummy(!dummy);
           },
         },
       ]

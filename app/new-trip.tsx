@@ -1,4 +1,5 @@
 import { repo } from "@/assets/db/repo";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Link } from 'expo-router';
 import { useState } from "react";
 import { Text, TextInput, View } from "react-native";
@@ -18,11 +19,21 @@ export default function NewTrip() {
     const [textContent, setTextContent] = useState('Confirm');
     const [next, setNext] = useState(true);
 
+    const store = async () => {
+        await AsyncStorage.setItem('destination', tripName);
+    }
+
+    const clear = async () => {
+        await AsyncStorage.clear();
+    }
+
     const addData = () => {
         if (textContent === 'Confirm') {
-            repo.createTrip({destination: tripName, start_date: startDate.toDateString(), end_date: endDate.toDateString()});
+            store();
+            repo.createTrip({ destination: tripName, start_date: startDate.toDateString(), end_date: endDate.toDateString() });
             setTextContent('Reset');
         } else {
+            clear();
             repo.deleteTrip(tripName);
             setTextContent('Confirm');
             setTripName("");

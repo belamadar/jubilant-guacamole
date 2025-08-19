@@ -17,20 +17,20 @@ export const repo = {
     );
   },
 
-  setTripActivities(tripId: string, activityIds: string[]) {
+  setTripActivities(destination: string, activityIds: string[]) {
     db.withTransactionSync(() => {
-      db.runSync(`DELETE FROM trip_activity WHERE trip_id=?;`, [tripId]);
+      db.runSync(`DELETE FROM trip_activity WHERE destination=?;`, [destination]);
       for (const aid of activityIds) {
-        db.runSync(`INSERT INTO trip_activity (trip_id,activity_id) VALUES (?,?);`, [tripId, aid]);
+        db.runSync(`INSERT INTO trip_activity (destination,activity_id) VALUES (?,?);`, [destination, aid]);
       }
     });
   },
 
-  setTripTransports(tripId: string, transportIds: string[]) {
+  setTripTransports(destination: string, transportIds: string[]) {
     db.withTransactionSync(() => {
-      db.runSync(`DELETE FROM trip_transport WHERE trip_id=?;`, [tripId]);
+      db.runSync(`DELETE FROM trip_transport WHERE destination=?;`, [destination]);
       for (const tid of transportIds) {
-        db.runSync(`INSERT INTO trip_transport (trip_id,transport_id) VALUES (?,?);`, [tripId, tid]);
+        db.runSync(`INSERT INTO trip_transport (destination,transport_id) VALUES (?,?);`, [destination, tid]);
       }
     });
   },
@@ -109,6 +109,16 @@ export const repo = {
 
   getAllTrips() {
     let query = `SELECT * FROM trip;`;
+    return db.getAllSync(query);
+  },
+
+  getAllTransports() {
+    let query = `SELECT * FROM trip;`;
+    return db.getAllSync(query);
+  },
+
+  getAllActivities() {
+    let query = `SELECT * FROM trip_activity;`;
     return db.getAllSync(query);
   },
 
