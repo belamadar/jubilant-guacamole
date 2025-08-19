@@ -1,7 +1,7 @@
 import { repo } from "@/assets/db/repo";
 import { Link } from 'expo-router';
 import { useState } from "react";
-import { ScrollView, Text, TextInput } from "react-native";
+import { Text, TextInput, View } from "react-native";
 import DatePicker from 'react-native-date-picker';
 import { Button } from "react-native-paper";
 
@@ -34,7 +34,7 @@ export default function NewTrip() {
     }
 
     return (
-        <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "center", gap: 10 }}>
+        <View style={{ display: "flex", flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "center", gap: 10 }}>
             <Text style={{ fontSize: 64, fontWeight: "bold" }}>New Trip</Text>
 
             <TextInput
@@ -80,6 +80,6 @@ export default function NewTrip() {
                 {/* <Button mode="contained" buttonColor="#994c00" disabled={false}>Next</Button> */}
             </Link>
 
-        </ScrollView>
+        </View>
     );
 }

@@ -12,7 +12,6 @@ export default function TripItems() {
     const styles = StyleSheet.create({
         main_container: {
             display: "flex",
-            flex: 1,
             backgroundColor: "white"
         },
 

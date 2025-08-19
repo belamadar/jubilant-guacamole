@@ -28,7 +28,7 @@ export default function Travel_Info({ location, date, progress }: props) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            flexWrap: "wrap",
+            maxWidth: "50%",
             alignItems: "flex-start",
             padding: 2,
             gap: 5

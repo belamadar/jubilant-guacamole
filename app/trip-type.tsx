@@ -1,10 +1,10 @@
 import { Link } from 'expo-router';
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-paper";
 
 export default function TripType() {
     const styles = StyleSheet.create({
-        scroll_Container: {
+        main_Container: {
             display: "flex", 
             flex: 1, 
             backgroundColor: "white", 
@@ -22,7 +22,7 @@ export default function TripType() {
     });
 
     return (
-        <ScrollView contentContainerStyle={styles.scroll_Container}>
+        <View style={styles.main_Container}>
             <Text style={{ marginTop: 10 }}>Transportation</Text>
             <View style={styles.container}>
 
@@ -81,6 +81,6 @@ export default function TripType() {
                 <Button mode="contained" buttonColor="#994c00">Done</Button>
             </Link>
             
-        </ScrollView>
+        </View>
     );
 }

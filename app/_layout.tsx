@@ -10,6 +10,7 @@ export default function RootLayout() {
     container: {
       display: "flex",
       flex: 1,
+      backgroundColor: "shite",
       paddingTop: insets.top,
       paddingBottom: insets.bottom,
       paddingLeft: insets.left,
