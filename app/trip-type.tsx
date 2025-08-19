@@ -63,7 +63,11 @@ export default function TripType() {
             return newPressed;
         });
 
-        setDone(transportation.length > 0 || activities.length > 0);
+        if(transportation.length > 0 && activities.length > 0) {
+            setDone(false);
+        } else {
+            setDone(true);
+        }
     }
 
     const pushActivity = (item: string, index: number) => {
@@ -81,7 +85,11 @@ export default function TripType() {
             return newPressed;
         });
 
-        setDone(transportation.length > 0 || activities.length > 0);
+        if(transportation.length > 0 && activities.length > 0) {
+            setDone(false);
+        } else {
+            setDone(true);
+        }
     }
 
     const addData = async () => {
