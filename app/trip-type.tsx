@@ -6,6 +6,15 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-paper";
 
 export default function TripType() {
+    const [transportation, setTransportation] = useState<string[]>([]);
+    const [activities, setActivities] = useState<string[]>([]);
+    const [pressed, setPressed] = useState(Array(10).fill(false));
+
+    const [done, setDone] = useState(true);
+    const [next, setNext] = useState(true);
+
+    const [err, setErr] = useState("");
+
     const styles = StyleSheet.create({
         main_Container: {
             display: "flex",
@@ -25,49 +34,62 @@ export default function TripType() {
 
         not_pressed: {
             padding: 10,
-            borderWidth: 1,
+            backgroundColor: "#ffd1c5"
         },
 
         pressed: {
             padding: 10,
-            borderWidth: 1,
-            borderColor: "blue"
+            backgroundColor: "#eF9a9a"
         }
     });
 
     const getDest = async () => {
-        return await AsyncStorage.getItem('destination');
+        let dest: string | null = await AsyncStorage.getItem('destination');
+        return dest;
     }
 
-    let transportation: string[] = [];
-    let activities: string[] = [];
-    const done = transportation.length === 0 && activities.length === 0;
-    let next: boolean = true;
+    const pushTransport = (item: string, index: number) => {
+        setTransportation(prev => {
+            if (!prev.includes(item)) {
+                return [...prev, item];
+            } else {
+                return prev.filter(transport => transport !== item);
+            }
+        });
 
-    const [err, setErr] = useState("");
+        setPressed(prev => {
+            const newPressed = [...prev];
+            newPressed[index] = !newPressed[index];
+            return newPressed;
+        });
 
-    const pushTransport = (item: string) => {
-        if (!transportation.includes(item)) {
-            transportation.push(item);
-        } else {
-            transportation.filter((transport) => item !== transport);
-        }
+        setDone(transportation.length > 0 && activities.length > 0);
     }
 
-    const pushActivity = (item: string) => {
-        if (!activities.includes(item)) {
-            activities.push(item);
-        } else {
-            activities.filter((activity) => item !== activity);
-        }
+    const pushActivity = (item: string, index: number) => {
+        setActivities(prev => {
+            if (!prev.includes(item)) {
+                return [...prev, item];
+            } else {
+                return prev.filter(activity => activity !== item);
+            }
+        });
+
+        setPressed(prev => {
+            const newPressed = [...prev];
+            newPressed[index] = !newPressed[index];
+            return newPressed;
+        });
+
+        setDone(transportation.length > 0 || activities.length > 0);
     }
 
-    const addData = () => {
+    const addData = async () => {
         try {
-            const destination = getDest().toString();
+            const destination: string = (await getDest()) ?? "";
             repo.setTripTransports(destination, transportation);
             repo.setTripActivities(destination, activities);
-            next = !next;
+            setNext(false);
         } catch (error) {
             setErr(error instanceof Error ? error.message : String(error));
         }
@@ -79,62 +101,64 @@ export default function TripType() {
                 <Text style={{ marginTop: 10 }}>Transportation</Text>
                 <View style={styles.container}>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="bus" contentStyle={
-                        transportation.includes("Bus") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushTransport("Bus")}>Bus</Button>
+                    <Button mode="contained" textColor="black" icon="bus" onPress={() => pushTransport("Bus", 0)} contentStyle={
+                        pressed[0] ? styles.pressed : styles.not_pressed
+                    }>Bus</Button>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="airplane" contentStyle={
-                        transportation.includes("Airplane") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushTransport("Airplane")}>Airplane</Button>
+                    <Button mode="contained" textColor="black" icon="airplane" onPress={() => pushTransport("Airplane", 1)} contentStyle={
+                        pressed[1] ? styles.pressed : styles.not_pressed
+                    }>Airplane</Button>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="ferry" contentStyle={
-                        transportation.includes("Ferry") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushTransport("Ferry")}>Ferry</Button>
+                    <Button mode="contained" textColor="black" icon="ferry" onPress={() => pushTransport("Ferry", 2)} contentStyle={
+                        pressed[2] ? styles.pressed : styles.not_pressed
+                    }>Ferry</Button>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="car" contentStyle={
-                        transportation.includes("Car") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushTransport("Car")}>Car</Button>
+                    <Button mode="contained" textColor="black" icon="car" onPress={() => pushTransport("Car", 3)} contentStyle={
+                        pressed[3] ? styles.pressed : styles.not_pressed
+                    }>Car</Button>
 
                 </View>
 
                 <Text style={{ marginTop: 10 }}>Activities</Text>
                 <View style={styles.container}>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="campfire" contentStyle={
-                        activities.includes("Camping") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushActivity("Camping")}>Camping</Button>
+                    <Button mode="contained" textColor="black" icon="campfire" onPress={() => pushActivity("Camping", 4)} contentStyle={
+                        pressed[4] ? styles.pressed : styles.not_pressed
+                    }>Camping</Button>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="surfing" contentStyle={
-                        activities.includes("Surfing") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushActivity("Surfing")}>Surfing</Button>
+                    <Button mode="contained" textColor="black" icon="surfing" onPress={() => pushActivity("Surfing", 5)} contentStyle={
+                        pressed[5] ? styles.pressed : styles.not_pressed
+                    }>Surfing</Button>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="ferry" contentStyle={
-                        activities.includes("Sailing") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushActivity("Sailing")}>Sailing</Button>
+                    <Button mode="contained" textColor="black" icon="ferry" onPress={() => pushActivity("Sailing", 6)} contentStyle={
+                        pressed[6] ? styles.pressed : styles.not_pressed
+                    }>Sailing</Button>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="beach" contentStyle={
-                        activities.includes("Beach") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushActivity("Beach")}>Beach</Button>
+                    <Button mode="contained" textColor="black" icon="beach" onPress={() => pushActivity("Beach", 7)} contentStyle={
+                        pressed[7] ? styles.pressed : styles.not_pressed
+                    }>Beach</Button>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="tie" contentStyle={
-                        activities.includes("Dress-up event") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushActivity("Dress-up event")}>Dress-up event</Button>
+                    <Button mode="contained" textColor="black" icon="tie" onPress={() => pushActivity("Dress-up event", 8)} contentStyle={
+                        pressed[8] ? styles.pressed : styles.not_pressed
+                    }>Dress-up event</Button>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="sunglasses" contentStyle={
-                        activities.includes("Outdoors") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushActivity("Outdoors")}>Outdoors</Button>
+                    <Button mode="contained" textColor="black" icon="sunglasses" onPress={() => pushActivity("Outdoors", 9)} contentStyle={
+                        pressed[9] ? styles.pressed : styles.not_pressed
+                    }>Outdoors</Button>
 
-                    <Button mode="contained" textColor="black" buttonColor="#ffd1c5" icon="hiking" contentStyle={
-                        activities.includes("Hiking") ? styles.pressed : styles.not_pressed
-                    } onPress={() => pushActivity("Hiking")}>Hiking</Button>
+                    <Button mode="contained" textColor="black" icon="hiking" onPress={() => pushActivity("Hiking", 10)} contentStyle={
+                        pressed[10] ? styles.pressed : styles.not_pressed
+                    }>Hiking</Button>
 
                 </View>
 
-                <Button mode="contained" buttonColor="#994c00" disabled={done} onPress={addData}>Done</Button>
+                <View style={{ marginTop: 10, gap: 10 }}>
+                    <Button mode="contained" buttonColor="#994c00" disabled={done} onPress={addData}>Done</Button>
 
-                <Link href="/trip-items" asChild>
-                    <Button mode="contained" buttonColor="#994c00" disabled={next}>Next</Button>
-                </Link>
+                    <Link href="/trip-items" asChild>
+                        <Button mode="contained" buttonColor="#994c00" disabled={next}>Next</Button>
+                    </Link>
+                </View>
 
             </ScrollView>
 

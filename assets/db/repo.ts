@@ -18,6 +18,8 @@ export const repo = {
   },
 
   setTripActivities(destination: string, activityIds: string[]) {
+    // console.log(`destination: ${destination}`);
+    // console.log(`activities: ${activityIds}`);
     db.withTransactionSync(() => {
       db.runSync(`DELETE FROM trip_activity WHERE destination=?;`, [destination]);
       for (const aid of activityIds) {
@@ -27,6 +29,8 @@ export const repo = {
   },
 
   setTripTransports(destination: string, transportIds: string[]) {
+    // console.log(`destination: ${destination}`);
+    // console.log(`transportation: ${transportIds}`);
     db.withTransactionSync(() => {
       db.runSync(`DELETE FROM trip_transport WHERE destination=?;`, [destination]);
       for (const tid of transportIds) {
@@ -113,7 +117,7 @@ export const repo = {
   },
 
   getAllTransports() {
-    let query = `SELECT * FROM trip;`;
+    let query = `SELECT * FROM trip_transport;`;
     return db.getAllSync(query);
   },
 

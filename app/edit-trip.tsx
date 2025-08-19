@@ -1,6 +1,6 @@
 import { repo } from "@/assets/db/repo";
 import { useState } from "react";
-import { ScrollView, Text } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 
 export default function EditTrip() {
     let transports: any[] = [];
@@ -19,13 +19,22 @@ export default function EditTrip() {
             <Text style={{ fontSize: 64, fontWeight: "bold" }}>Edit Trip</Text>
             {transports.length > 0 && (
                 transports.map((item, index) => (
-                    <Text key={index}>{item}</Text>
+                    <View key={index}>
+                        <Text>Transportation</Text>
+                        <Text>{item.destination}</Text>
+                        <Text>{item.transport_id}</Text>
+                    </View>
+                    
                 ))
             )}
 
             {activities.length > 0 && (
                 activities.map((item, index) => (
-                    <Text key={index}>{item}</Text>
+                    <View key={index}>
+                        <Text>Activities</Text>
+                        <Text>{item.destination}</Text>
+                        <Text>{item.activity_id}</Text>
+                    </View>
                 ))
             )}
 
