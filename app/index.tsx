@@ -13,9 +13,12 @@ export default function Index() {
     container: {
       display: "flex",
       flex: 1,
-      backgroundColor: "white",
-      gap: 5,
-      padding: 20
+      backgroundColor: "white"
+    },
+    
+    scroll_container: {
+      padding: 20,
+      gap: 5
     }
   });
 
@@ -55,11 +58,11 @@ export default function Index() {
           </Link>
         </View>
       ) : (
-        <ScrollView>
+        <ScrollView contentContainerStyle={styles.scroll_container}>
           {travel_data.map((item: any, index: number) => (
             <Travel_Info key={index} location={item.destination} date={item.start_date} progress={70} />
           ))}
-          <Button mode="contained" buttonColor="#994c00" textColor="white" onPress={promptDelete}>Delete all trips</Button>
+          <Button mode="contained" buttonColor="#994c00" textColor="white" onPress={() => promptDelete}>Delete all trips</Button>
         </ScrollView>
       )}
 
