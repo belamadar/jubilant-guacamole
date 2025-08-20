@@ -10,7 +10,7 @@ export default function TripType() {
     const [activities, setActivities] = useState<string[]>([]);
     const [pressed, setPressed] = useState(Array(10).fill(false));
 
-    const [done, setDone] = useState(true);
+    const done = transportation.length === 0 || activities.length === 0;
     const [next, setNext] = useState(true);
 
     const [err, setErr] = useState("");
@@ -62,12 +62,6 @@ export default function TripType() {
             newPressed[index] = !newPressed[index];
             return newPressed;
         });
-
-        if(transportation.length > 0 && activities.length > 0) {
-            setDone(false);
-        } else {
-            setDone(true);
-        }
     }
 
     const pushActivity = (item: string, index: number) => {
@@ -84,12 +78,6 @@ export default function TripType() {
             newPressed[index] = !newPressed[index];
             return newPressed;
         });
-
-        if(transportation.length > 0 && activities.length > 0) {
-            setDone(false);
-        } else {
-            setDone(true);
-        }
     }
 
     const addData = async () => {
