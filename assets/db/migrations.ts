@@ -53,8 +53,7 @@ CREATE TABLE IF NOT EXISTS rule (
 );
 
 CREATE TABLE IF NOT EXISTS trip (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  destination TEXT NOT NULL,
+  destination TEXT PRIMARY KEY,
   start_date TEXT NOT NULL,
   end_date TEXT NOT NULL,
   notes TEXT,
@@ -67,7 +66,7 @@ CREATE TABLE IF NOT EXISTS trip_activity (
   destination TEXT NOT NULL,
   activity_id TEXT NOT NULL,
   PRIMARY KEY (destination, activity_id),
-  FOREIGN KEY (destination) REFERENCES trip(destination) ON DELETE CASCADE,
+  FOREIGN KEY (destination) REFERENCES trip(destination) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (activity_id) REFERENCES activity(id)
 );
 
@@ -75,7 +74,7 @@ CREATE TABLE IF NOT EXISTS trip_transport (
   destination TEXT NOT NULL,
   transport_id TEXT NOT NULL,
   PRIMARY KEY (destination, transport_id),
-  FOREIGN KEY (destination) REFERENCES trip(destination) ON DELETE CASCADE,
+  FOREIGN KEY (destination) REFERENCES trip(destination) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (transport_id) REFERENCES transport_mode(id)
 );
 
