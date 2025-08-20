@@ -17,22 +17,22 @@ export default function EditTrip() {
     return (
         <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "center" }}>
             <Text style={{ fontSize: 64, fontWeight: "bold" }}>Edit Trip</Text>
+            <Text style={{ fontWeight: "bold", fontSize: 32 }}>Transportation</Text>
             {transports.length > 0 && (
                 transports.map((item, index) => (
                     <View key={index}>
-                        <Text>Transportation</Text>
-                        <Text>{item.destination}</Text>
+                        <Text style={{ fontWeight: "bold" }}>{item.destination}</Text>
                         <Text>{item.transport_id}</Text>
                     </View>
                     
                 ))
             )}
 
+            <Text style={{ fontWeight: "bold", fontSize: 32 }}>Activities</Text>
             {activities.length > 0 && (
                 activities.map((item, index) => (
                     <View key={index}>
-                        <Text>Activities</Text>
-                        <Text>{item.destination}</Text>
+                        <Text style={{ fontWeight: "bold" }}>{item.destination}</Text>
                         <Text>{item.activity_id}</Text>
                     </View>
                 ))
