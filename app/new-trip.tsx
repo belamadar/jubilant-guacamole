@@ -20,7 +20,8 @@ export default function NewTrip() {
     const [next, setNext] = useState(true);
 
     const store = async () => {
-        await AsyncStorage.setItem('destination', tripName);
+        clear();
+        await AsyncStorage.setItem("destination", tripName);
     }
 
     const clear = async () => {

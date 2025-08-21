@@ -8,6 +8,7 @@ import { Button } from "react-native-paper";
 export default function TripType() {
     const [transportation, setTransportation] = useState<string[]>([]);
     const [activities, setActivities] = useState<string[]>([]);
+    
     const [pressed, setPressed] = useState(Array(10).fill(false));
 
     const done = transportation.length === 0 || activities.length === 0;
@@ -44,8 +45,8 @@ export default function TripType() {
     });
 
     const getDest = async () => {
-        let dest: string | null = await AsyncStorage.getItem('destination');
-        return dest;
+        const data = (await AsyncStorage.getItem("destination"));
+        return data;
     }
 
     const pushTransport = (item: string, index: number) => {
@@ -82,7 +83,7 @@ export default function TripType() {
 
     const addData = async () => {
         try {
-            const destination: string = (await getDest()) ?? "";
+            const destination = (await getDest() ?? "");
             repo.setTripTransports(destination, transportation);
             repo.setTripActivities(destination, activities);
             setNext(false);

@@ -1,6 +1,8 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Button } from "react-native-paper";
 import CheckBox from './Components/CheckBox';
 
 export default function TripItems() {
@@ -186,6 +188,10 @@ export default function TripItems() {
                 </View>
             )}
 
+            <Link href="/" asChild>
+                <Button mode="contained" buttonColor="#994c00" textColor="white">Finish</Button>
+            </Link>
+            
         </ScrollView >
     );
 

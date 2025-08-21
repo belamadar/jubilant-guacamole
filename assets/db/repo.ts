@@ -39,12 +39,12 @@ export const repo = {
     });
   },
 
-  generatePackingList({ tripId, days, temp = null, rain = null }: Ctx & { tripId: string }) {
+  generatePackingList({ destination, days, temp = null, rain = null }: Ctx & { destination: string }) {
     const acts = db.getAllSync<{ id: string }>(
-      `SELECT activity_id AS id FROM trip_activity WHERE trip_id=?;`, [tripId]
+      `SELECT activity_id AS id FROM trip_activity WHERE destination=?;`, [destination]
     ).map(r => r.id);
     const trns = db.getAllSync<{ id: string }>(
-      `SELECT transport_id AS id FROM trip_transport WHERE trip_id=?;`, [tripId]
+      `SELECT transport_id AS id FROM trip_transport WHERE destination=?;`, [destination]
     ).map(r => r.id);
 
     const rules = db.getAllSync<{
@@ -66,17 +66,17 @@ export const repo = {
         const qty = Math.max(0, evalFormula(r.formula, { days, temp, rain }));
         const existed = db.getFirstSync<{ overridden: number }>(
           `SELECT overridden FROM trip_item WHERE trip_id=? AND item_id=?;`,
-          [tripId, r.item_id]
+          [destination, r.item_id]
         );
         if (!existed) {
           db.runSync(
             `INSERT INTO trip_item (trip_id,item_id,quantity,unit,checked,overridden) VALUES (?,?,?,?,0,0);`,
-            [tripId, r.item_id, qty, r.default_unit]
+            [destination, r.item_id, qty, r.default_unit]
           );
         } else if (existed.overridden === 0) {
           db.runSync(
             `UPDATE trip_item SET quantity=?, unit=? WHERE trip_id=? AND item_id=?;`,
-            [qty, r.default_unit, tripId, r.item_id]
+            [qty, r.default_unit, destination, r.item_id]
           );
         }
       }
@@ -114,6 +114,43 @@ export const repo = {
   getAllTrips() {
     let query = `SELECT * FROM trip;`;
     return db.getAllSync(query);
+  },
+
+  getTrip(destination: string) {
+    try {
+      return db.getFirstSync(
+        `SELECT destination, start_date, end_date FROM trip WHERE destination = ?;`,
+        [destination]
+      );
+    } catch (error) {
+      console.log(error);
+    }
+
+  },
+
+  getTransport(destination: string) {
+    try {
+      return db.getAllSync(
+        `SELECT transport_id FROM trip_transport WHERE destination = ?;`,
+        [destination]
+      ) as any;
+      
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  getActivity(destination: string) {
+    try {
+      return db.getAllSync(
+        `SELECT activity_id FROM trip_activity WHERE destination = ?;`,
+        [destination]
+      ) as any;
+
+    } catch (error) {
+      console.log(error);
+    }
+
   },
 
   getAllTransports() {
