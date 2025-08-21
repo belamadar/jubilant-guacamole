@@ -6,18 +6,6 @@ import DatePicker from 'react-native-date-picker';
 import { Button } from "react-native-paper";
 
 export default function NewTrip() {
-
-    const styles = StyleSheet.create({
-        container: {
-            display: "flex",
-            flex: 1,
-            backgroundColor: "white",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 10
-        }
-    });
-
     const [tripName, setTripName] = useState("");
 
     const [startDate, setStartDate] = useState(new Date());
@@ -96,3 +84,14 @@ export default function NewTrip() {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        display: "flex",
+        flex: 1,
+        backgroundColor: "white",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 10
+    }
+});

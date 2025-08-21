@@ -6,17 +6,6 @@ import { Button } from "react-native-paper";
 
 
 export default function EditTrip() {
-
-  const styles = StyleSheet.create({
-    container: {
-      display: "flex",
-      flex: 1,
-      backgroundColor: "white", 
-      alignItems: "center", 
-      justifyContent: "center"
-    }
-  });
-
   const params = useLocalSearchParams<{ destination?: string }>();
   const [trip, setTrip] = useState<any | null>(null);
   const [transport, setTransport] = useState<any[]>([]);
@@ -83,3 +72,13 @@ export default function EditTrip() {
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+    container: {
+      display: "flex",
+      flex: 1,
+      backgroundColor: "white", 
+      alignItems: "center", 
+      justifyContent: "center"
+    }
+  });

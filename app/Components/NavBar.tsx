@@ -3,18 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { IconButton } from "react-native-paper";
 
 export default function NavBar() {
-    const styles = StyleSheet.create({
-        container: {
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingTop: 5,
-            paddingBottom: 10,
-            paddingHorizontal: 5,
-            backgroundColor: "#fff5ee",
-        }
-    });
-
     return (
         <View style={styles.container}>
 
@@ -49,3 +37,15 @@ export default function NavBar() {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingTop: 5,
+        paddingBottom: 10,
+        paddingHorizontal: 5,
+        backgroundColor: "#fff5ee",
+    }
+});

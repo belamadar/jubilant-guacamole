@@ -5,16 +5,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import NavBar from "./Components/NavBar";
 
 export default function RootLayout() {
-  const insets = useSafeAreaInsets();
-
-  const styles = StyleSheet.create({
-    container: {
-      paddingBottom: insets.bottom,
-      paddingLeft: insets.left,
-      paddingRight: insets.right
-    }
-  });
-
   return (
     <>
       <Stack>
@@ -29,7 +19,17 @@ export default function RootLayout() {
       <View style={styles.container}>
         <NavBar />
       </View>
-      
+
     </>
   );
 }
+
+const insets = useSafeAreaInsets();
+
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: insets.bottom,
+    paddingLeft: insets.left,
+    paddingRight: insets.right
+  }
+});

@@ -6,51 +6,6 @@ import CircularProgress from 'react-native-circular-progress-indicator';
 import { Button, IconButton } from "react-native-paper";
 
 export default function Index() {
-
-  const styles = StyleSheet.create({
-    container: {
-      display: "flex",
-      flex: 1,
-      backgroundColor: "white"
-    },
-
-    scroll_container: {
-      padding: 20,
-      gap: 5
-    },
-
-    outer: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
-      marginLeft: 5,
-      marginRight: 5,
-      padding: 5,
-      borderWidth: 2,
-      borderRadius: 10,
-      borderColor: "#dcdcdc",
-      backgroundColor: "#fff5ee",
-    },
-
-    innerLeft: {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      maxWidth: "50%",
-      alignItems: "flex-start",
-      padding: 2,
-      gap: 5
-    },
-
-    innerRight: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center",
-      gap: 10
-    }
-  });
-
   const [travelData, setTravelData] = useState<any[]>([]);
   const [err, setError] = useState("");
 
@@ -154,3 +109,47 @@ export default function Index() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+    container: {
+      display: "flex",
+      flex: 1,
+      backgroundColor: "white"
+    },
+
+    scroll_container: {
+      padding: 20,
+      gap: 5
+    },
+
+    outer: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      marginLeft: 5,
+      marginRight: 5,
+      padding: 5,
+      borderWidth: 2,
+      borderRadius: 10,
+      borderColor: "#dcdcdc",
+      backgroundColor: "#fff5ee",
+    },
+
+    innerLeft: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      maxWidth: "50%",
+      alignItems: "flex-start",
+      padding: 2,
+      gap: 5
+    },
+
+    innerRight: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: 10
+    }
+  });

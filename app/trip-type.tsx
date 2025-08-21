@@ -6,7 +6,6 @@ import { Button } from "react-native-paper";
 
 
 export default function TripType() {
-
     const params = useLocalSearchParams<{ destination?: string }>();
     const [transportation, setTransportation] = useState<string[]>([]);
     const [activities, setActivities] = useState<string[]>([]);
@@ -18,32 +17,7 @@ export default function TripType() {
 
     const [err, setErr] = useState("");
 
-    const styles = StyleSheet.create({
-        main_Container: {
-            display: "flex",
-            flex: 1,
-            paddingHorizontal: 40,
-            backgroundColor: "white"
-        },
 
-        container: {
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            justifyContent: "flex-start",
-            gap: 5
-        },
-
-        not_pressed: {
-            padding: 10,
-            backgroundColor: "#ffd1c5"
-        },
-
-        pressed: {
-            padding: 10,
-            backgroundColor: "#eF9a9a"
-        }
-    });
 
     const pushTransport = (item: string, index: number) => {
         setTransportation(prev => {
@@ -162,3 +136,30 @@ export default function TripType() {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    main_Container: {
+        display: "flex",
+        flex: 1,
+        paddingHorizontal: 40,
+        backgroundColor: "white"
+    },
+
+    container: {
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "flex-start",
+        gap: 5
+    },
+
+    not_pressed: {
+        padding: 10,
+        backgroundColor: "#ffd1c5"
+    },
+
+    pressed: {
+        padding: 10,
+        backgroundColor: "#eF9a9a"
+    }
+});

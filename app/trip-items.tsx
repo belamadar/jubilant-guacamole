@@ -6,62 +6,10 @@ import { Button } from "react-native-paper";
 import CheckBox from './Components/CheckBox';
 
 export default function TripItems() {
-
     const [essentials, setEssentials] = useState(true);
     const [health, setHealth] = useState(false);
     const [audio, setAudio] = useState(false);
     const [tab, setTab] = useState(false);
-
-    const styles = StyleSheet.create({
-        main_container: {
-            display: "flex",
-            backgroundColor: "white"
-        },
-
-        nav_container: {
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "row",
-            backgroundColor: "#fff5ee",
-            padding: 10,
-            marginBottom: 1
-        },
-
-        menu_container: {
-            backgroundColor: "#fff5ee",
-            borderBottomWidth: 1,
-            borderBottomColor: "#eeeee4",
-            elevation: 5 
-        },
-
-        item: {
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: 10
-        },
-
-        button: {
-            display: "flex",
-            gap: 5,
-            padding: 5,
-            alignItems: "center",
-            flexDirection: "row",
-        },
-
-        button_Pressed: {
-            display: "flex",
-            flexDirection: "row",
-            gap: 5,
-            padding: 5,
-            alignItems: "center",
-            borderBottomWidth: 2,
-            borderBottomColor: "#994c00",
-        }
-
-
-    });
 
     const showEssentials = () => {
         if (!essentials) {
@@ -197,4 +145,55 @@ export default function TripItems() {
     );
 
 }
+
+const styles = StyleSheet.create({
+        main_container: {
+            display: "flex",
+            backgroundColor: "white"
+        },
+
+        nav_container: {
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "row",
+            backgroundColor: "#fff5ee",
+            marginBottom: 1
+        },
+
+        menu_container: {
+            backgroundColor: "#fff5ee",
+            borderBottomWidth: 1,
+            borderBottomColor: "#eeeee4",
+            padding: 10,
+            elevation: 5 
+        },
+
+        item: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: 10
+        },
+
+        button: {
+            display: "flex",
+            gap: 5,
+            padding: 10,
+            alignItems: "center",
+            flexDirection: "row",
+        },
+
+        button_Pressed: {
+            display: "flex",
+            flexDirection: "row",
+            gap: 5,
+            padding: 10,
+            alignItems: "center",
+            borderBottomWidth: 2,
+            borderBottomColor: "#994c00",
+        }
+
+
+    });
 
