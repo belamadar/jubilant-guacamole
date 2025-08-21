@@ -1,11 +1,11 @@
 import { repo } from "@/assets/db/repo";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Link } from 'expo-router';
+import { Link, useLocalSearchParams } from 'expo-router';
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-paper";
 
 export default function TripType() {
+    const params = useLocalSearchParams<{ destination? : string }>();
     const [transportation, setTransportation] = useState<string[]>([]);
     const [activities, setActivities] = useState<string[]>([]);
     
@@ -44,11 +44,6 @@ export default function TripType() {
         }
     });
 
-    const getDest = async () => {
-        const data = (await AsyncStorage.getItem("destination"));
-        return data;
-    }
-
     const pushTransport = (item: string, index: number) => {
         setTransportation(prev => {
             if (!prev.includes(item)) {
@@ -83,7 +78,7 @@ export default function TripType() {
 
     const addData = async () => {
         try {
-            const destination = (await getDest() ?? "");
+            const destination = params.destination ?? "";
             repo.setTripTransports(destination, transportation);
             repo.setTripActivities(destination, activities);
             setNext(false);
@@ -152,7 +147,7 @@ export default function TripType() {
                 <View style={{ marginTop: 10, gap: 10 }}>
                     <Button mode="contained" buttonColor="#994c00" disabled={done} onPress={addData}>Done</Button>
 
-                    <Link href="/trip-items" asChild>
+                    <Link href={{ pathname: "/trip-items", params: { trip: params.destination, transport: transportation, activity: activities }}} push asChild>
                         <Button mode="contained" buttonColor="#994c00" disabled={next}>Next</Button>
                     </Link>
                 </View>

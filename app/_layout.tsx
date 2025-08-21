@@ -24,6 +24,7 @@ export default function RootLayout() {
         <Stack.Screen name="trip-items" options={{ title: "New Trip", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
         <Stack.Screen name="calendar" options={{ title: "Calendar", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
         <Stack.Screen name="settings" options={{ title: "Settings", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
+        <Stack.Screen name="edit-trip" options={{ title: "My Trips", headerTitleAlign: "center", headerStyle: { backgroundColor: "#fff5ee" } }} />
       </Stack>
       <View style={styles.container}>
         <NavBar />

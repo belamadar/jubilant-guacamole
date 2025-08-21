@@ -1,5 +1,4 @@
 import { repo } from "@/assets/db/repo";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Link } from 'expo-router';
 import { useState } from "react";
 import { Text, TextInput, View } from "react-native";
@@ -19,22 +18,12 @@ export default function NewTrip() {
     const [textContent, setTextContent] = useState('Confirm');
     const [next, setNext] = useState(true);
 
-    const store = async () => {
-        clear();
-        await AsyncStorage.setItem("destination", tripName);
-    }
-
-    const clear = async () => {
-        await AsyncStorage.clear();
-    }
-
+    
     const addData = () => {
         if (textContent === 'Confirm') {
-            store();
             repo.createTrip({ destination: tripName, start_date: startDate.toDateString(), end_date: endDate.toDateString() });
             setTextContent('Reset');
         } else {
-            clear();
             repo.deleteTrip(tripName);
             setTextContent('Confirm');
             setTripName("");
@@ -87,7 +76,7 @@ export default function NewTrip() {
             <Button mode='contained' buttonColor="#994c00" disabled={confirm} onPress={addData}>{textContent}</Button>
             {/* <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>{textContent}</Button> */}
 
-            <Link href="/trip-type" asChild>
+            <Link href={{ pathname: "/trip-type" , params:{ destination: tripName }}} push asChild>
                 <Button mode="contained" buttonColor="#994c00" disabled={next}>Next</Button>
                 {/* <Button mode="contained" buttonColor="#994c00" disabled={false}>Next</Button> */}
             </Link>

@@ -19,28 +19,28 @@ export default function NavBar() {
         <View style={styles.container}>
 
             <View>
-                <Link href="/" asChild>
+                <Link href="/" push asChild>
                     <IconButton icon="format-list-bulleted" iconColor="black" />
                 </Link>
                 <Text>My Trips</Text>
             </View>
 
             <View>
-                <Link href="/new-trip" asChild>
+                <Link href="/new-trip" push asChild>
                     <IconButton icon="plus" iconColor="black" />
                 </Link>
                 <Text>New Trip</Text>
             </View>
 
             <View>
-                <Link href="/calendar" asChild>
+                <Link href="/calendar" push asChild>
                     <IconButton icon="calendar" iconColor="black" />
                 </Link>
                 <Text>Calendar</Text>
             </View>
 
             <View>
-                <Link href="/settings" asChild>
+                <Link href="/settings" push asChild>
                     <IconButton icon="cog" iconColor="black" />
                 </Link>
                 <Text>Settings</Text>

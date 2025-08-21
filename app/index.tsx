@@ -5,80 +5,7 @@ import { Alert, ScrollView, StyleSheet, Text, View } from "react-native";
 import CircularProgress from 'react-native-circular-progress-indicator';
 import { Button, IconButton } from "react-native-paper";
 
-function EditTrip({ trip, onBack }: any) {
-  let transports: any[] = [];
-  let activities: any[] = [];
-  const [err, setError] = useState("");
-
-  const getData = () => {
-    try {
-      transports = repo.getTransport(trip.destination);
-      activities = repo.getActivity(trip.destination);
-      
-    } catch (error) {
-      setError(error instanceof Error ? error.message : String(error));
-    }
-  }
-
-  useEffect(() => {
-    try {
-      getData();
-    } catch (error) {
-      console.log(error);
-      setError(error instanceof Error ? error.message : String(error));
-    }
-  }, []);
-
-  return (
-    <ScrollView contentContainerStyle={{ display: "flex", flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "center" }}>
-      <Text style={{ fontSize: 64, fontWeight: "bold" }}>Edit Trip</Text>
-      <Text style={{ fontWeight: "bold", fontSize: 32 }}>Trip Information</Text>
-      {trip !== null && (
-        <View>
-          <Text style={{ fontWeight: "bold" }}>{trip.destination}</Text>
-          <Text>{trip.start_date}</Text>
-          <Text>{trip.end_date}</Text>
-        </View>
-      )}
-
-      <Text style={{ fontWeight: "bold", fontSize: 32 }}>Transportation</Text>
-      {transports.length > 0 && (
-        transports.map((item, index) => (
-          <Text key={index}>{item.transport_id}</Text>
-        ))
-      )}
-
-      <Text style={{ fontWeight: "bold", fontSize: 32 }}>Activities</Text>
-      {activities.length > 0 && (
-        activities.map((item, index) => (
-          <Text key={index}>{item.activity_id}</Text>
-        ))
-      )}
-
-      <Button mode="contained" buttonColor="#994c00" textColor="white" onPress={onBack}>Go back</Button>
-
-      {err && (
-        <Text style={{ textAlign: "center" }}>An error occured</Text>
-      )}
-
-    </ScrollView>
-  );
-}
-
 export default function Index() {
-  const [travelData, setTravelData] = useState<any[]>([]);
-  const [err, setError] = useState("");
-  const [editIndex, setEditIndex] = useState<number | null>(null);
-
-  const loadTrips = () => {
-    try {
-      let data = repo.getAllTrips();
-      setTravelData(data);
-    } catch (error) {
-      setError(error instanceof Error ? error.message : String(error));
-    }
-  }
-
   const styles = StyleSheet.create({
     container: {
       display: "flex",
@@ -122,6 +49,18 @@ export default function Index() {
       gap: 10
     }
   });
+
+  const [travelData, setTravelData] = useState<any[]>([]);
+  const [err, setError] = useState("");
+
+  const loadTrips = () => {
+    try {
+      let data = repo.getAllTrips();
+      setTravelData(data);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : String(error));
+    }
+  }
 
   const promptDeleteOne = (dest: string) => {
     Alert.alert(
@@ -168,14 +107,8 @@ export default function Index() {
 
         <ScrollView contentContainerStyle={styles.scroll_container}>
           {travelData.map((item: any, index: number) => (
-            <React.Fragment key={index}>
-
-              {editIndex === index ? (
-
-                <EditTrip trip={item} onBack={() => setEditIndex(null)} />
-
-              ) : editIndex === null ? (
-                <View style={styles.outer}>
+            
+                <View key={index} style={styles.outer}>
 
                   <View style={styles.innerLeft}>
 
@@ -200,15 +133,15 @@ export default function Index() {
                       maxValue={100}
                     />
 
-                    <IconButton icon="pencil" iconColor="white" containerColor="#994c00" onPress={() => setEditIndex(index)}/>
-                    <IconButton icon="trash-can" iconColor="white" containerColor="#994c00" onPress={() => promptDeleteOne(item.destination)}/>
+                    <Link href={{pathname: "/edit-trip", params: {item}}} push asChild>
+                        <IconButton icon="pencil" iconColor="white" containerColor="#994c00"/>
+                    </Link>
+                    
+                    <IconButton icon="trash-can" iconColor="white" containerColor="#994c00" onPress={() => promptDeleteOne(item.destination)} />
 
                   </View>
 
                 </View>
-              ) : null}
-
-            </React.Fragment>
           ))}
         </ScrollView>
       )}
