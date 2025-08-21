@@ -1,4 +1,5 @@
 import { Stack } from "expo-router";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import NavBar from "./Components/NavBar";
@@ -8,7 +9,6 @@ export default function RootLayout() {
 
   const styles = StyleSheet.create({
     container: {
-      // paddingTop: insets.top,
       paddingBottom: insets.bottom,
       paddingLeft: insets.left,
       paddingRight: insets.right
@@ -29,6 +29,7 @@ export default function RootLayout() {
       <View style={styles.container}>
         <NavBar />
       </View>
+      
     </>
   );
 }

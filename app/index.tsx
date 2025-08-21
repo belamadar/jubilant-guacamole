@@ -6,6 +6,7 @@ import CircularProgress from 'react-native-circular-progress-indicator';
 import { Button, IconButton } from "react-native-paper";
 
 export default function Index() {
+
   const styles = StyleSheet.create({
     container: {
       display: "flex",
@@ -133,7 +134,7 @@ export default function Index() {
                       maxValue={100}
                     />
 
-                    <Link href={{pathname: "/edit-trip", params: {item}}} push asChild>
+                    <Link href={{pathname: "/edit-trip", params: {destination: item.destination}}} push asChild>
                         <IconButton icon="pencil" iconColor="white" containerColor="#994c00"/>
                     </Link>
                     

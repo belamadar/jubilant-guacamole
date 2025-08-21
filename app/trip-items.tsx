@@ -6,6 +6,7 @@ import { Button } from "react-native-paper";
 import CheckBox from './Components/CheckBox';
 
 export default function TripItems() {
+
     const [essentials, setEssentials] = useState(true);
     const [health, setHealth] = useState(false);
     const [audio, setAudio] = useState(false);

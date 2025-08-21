@@ -4,11 +4,13 @@ import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-paper";
 
+
 export default function TripType() {
-    const params = useLocalSearchParams<{ destination? : string }>();
+
+    const params = useLocalSearchParams<{ destination?: string }>();
     const [transportation, setTransportation] = useState<string[]>([]);
     const [activities, setActivities] = useState<string[]>([]);
-    
+
     const [pressed, setPressed] = useState(Array(10).fill(false));
 
     const done = transportation.length === 0 || activities.length === 0;
@@ -20,9 +22,8 @@ export default function TripType() {
         main_Container: {
             display: "flex",
             flex: 1,
-            backgroundColor: "white",
             paddingHorizontal: 40,
-            gap: 10
+            backgroundColor: "white"
         },
 
         container: {
@@ -30,7 +31,7 @@ export default function TripType() {
             flexDirection: "row",
             flexWrap: "wrap",
             justifyContent: "flex-start",
-            gap: 5,
+            gap: 5
         },
 
         not_pressed: {
@@ -147,7 +148,7 @@ export default function TripType() {
                 <View style={{ marginTop: 10, gap: 10 }}>
                     <Button mode="contained" buttonColor="#994c00" disabled={done} onPress={addData}>Done</Button>
 
-                    <Link href={{ pathname: "/trip-items", params: { trip: params.destination, transport: transportation, activity: activities }}} push asChild>
+                    <Link href={{ pathname: "/trip-items", params: { trip: params.destination, transport: transportation, activity: activities } }} push asChild>
                         <Button mode="contained" buttonColor="#994c00" disabled={next}>Next</Button>
                     </Link>
                 </View>

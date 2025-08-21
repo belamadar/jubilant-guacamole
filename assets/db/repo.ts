@@ -121,7 +121,7 @@ export const repo = {
       return db.getFirstSync(
         `SELECT destination, start_date, end_date FROM trip WHERE destination = ?;`,
         [destination]
-      );
+      ) as any;
     } catch (error) {
       console.log(error);
     }

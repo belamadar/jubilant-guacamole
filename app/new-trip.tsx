@@ -1,11 +1,23 @@
 import { repo } from "@/assets/db/repo";
 import { Link } from 'expo-router';
 import { useState } from "react";
-import { Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import DatePicker from 'react-native-date-picker';
 import { Button } from "react-native-paper";
 
 export default function NewTrip() {
+
+    const styles = StyleSheet.create({
+        container: {
+            display: "flex",
+            flex: 1,
+            backgroundColor: "white",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 10
+        }
+    });
+
     const [tripName, setTripName] = useState("");
 
     const [startDate, setStartDate] = useState(new Date());
@@ -18,7 +30,7 @@ export default function NewTrip() {
     const [textContent, setTextContent] = useState('Confirm');
     const [next, setNext] = useState(true);
 
-    
+
     const addData = () => {
         if (textContent === 'Confirm') {
             repo.createTrip({ destination: tripName, start_date: startDate.toDateString(), end_date: endDate.toDateString() });
@@ -35,7 +47,7 @@ export default function NewTrip() {
     }
 
     return (
-        <View style={{ display: "flex", flex: 1, backgroundColor: "white", alignItems: "center", justifyContent: "center", gap: 10 }}>
+        <View style={styles.container}>
             <Text style={{ fontSize: 64, fontWeight: "bold" }}>New Trip</Text>
 
             <TextInput
@@ -76,7 +88,7 @@ export default function NewTrip() {
             <Button mode='contained' buttonColor="#994c00" disabled={confirm} onPress={addData}>{textContent}</Button>
             {/* <Button mode='contained' buttonColor="#994c00" disabled={false} onPress={addData}>{textContent}</Button> */}
 
-            <Link href={{ pathname: "/trip-type" , params:{ destination: tripName }}} push asChild>
+            <Link href={{ pathname: "/trip-type", params: { destination: tripName } }} push asChild>
                 <Button mode="contained" buttonColor="#994c00" disabled={next}>Next</Button>
                 {/* <Button mode="contained" buttonColor="#994c00" disabled={false}>Next</Button> */}
             </Link>
